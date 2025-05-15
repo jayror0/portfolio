@@ -72,7 +72,6 @@
           &copy; {{ new Date().getFullYear() }} Jayson Gomba. All rights
           reserved.
         </p>
-        <p>Built with Vue.js</p>
       </div>
     </div>
   </footer>
