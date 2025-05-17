@@ -1,7 +1,7 @@
 <template>
   <section id="education" class="education-section">
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">Education</h2>
+      <h2 class="section-title" data-aos="fade-up">Education.</h2>
 
       <div class="education-card" data-aos="fade-up">
         <div class="education-content">

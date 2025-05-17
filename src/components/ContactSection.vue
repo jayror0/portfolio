@@ -1,112 +1,76 @@
 <template>
   <section id="contact" class="contact-section">
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-subtitle">Reach Out</span>
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-description">
+          Have a question or want to work together? Feel free to contact me
+          through any of the channels below. I'll get back to you as soon as
+          possible!
+        </p>
+      </div>
 
-      <div class="contact-content">
-        <div class="contact-info" data-aos="fade-up">
-          <div class="info-item">
-            <div class="info-icon">
-              <font-awesome-icon :icon="['fab', 'microsoft']" />
+      <div
+        class="contact-info-container"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        <h3 class="contact-subheading">Contact Information</h3>
+
+        <div class="info-cards">
+          <div class="info-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="info-icon-wrapper">
+              <font-awesome-icon
+                :icon="['fas', 'envelope']"
+                class="info-icon"
+              />
             </div>
             <div class="info-details">
-              <h3>Microsoft</h3>
-              <p>coffee.gomba@outlook.com</p>
+              <h4>Email</h4>
+              <a href="mailto:jysngomba.rbm@gmail.com"
+                >jysngomba.rbm@gmail.com</a
+              >
+              <a href="mailto:coffee.gomba@outlook.com"
+                >coffee.gomba@outlook.com</a
+              >
             </div>
           </div>
+        </div>
 
-          <div class="info-item">
-            <div class="info-icon">
-              <font-awesome-icon :icon="['fas', 'envelope']" />
-            </div>
-            <div class="info-details">
-              <h3>Email</h3>
-              <p>jysngomba.rbm@gmail.com</p>
-            </div>
-          </div>
-
-          <div class="info-item">
-            <div class="info-icon">
-              <font-awesome-icon :icon="['fas', 'phone']" />
-            </div>
-            <div class="info-details">
-              <h3>Phone</h3>
-              <p>+63 995 7988 761</p>
-            </div>
-          </div>
-
-          <div class="info-item">
-            <div class="info-icon">
-              <font-awesome-icon :icon="['fas', 'location-dot']" />
-            </div>
-            <div class="info-details">
-              <h3>Location</h3>
-              <p>Philippines</p>
-            </div>
-          </div>
-
+        <div class="social-connect">
+          <h4 class="social-title">Connect With Me</h4>
           <div class="social-links">
             <a
-              href="https://github.com/jysngmb"
+              href="https://github.com/jayror0"
               target="_blank"
+              rel="noopener noreferrer"
               class="social-link"
+              aria-label="GitHub"
+              data-aos="fade-up"
+              data-aos-delay="600"
             >
               <font-awesome-icon :icon="['fab', 'github']" />
             </a>
             <a
               href="https://www.linkedin.com/in/jayro-gomba-8a7056365/"
               target="_blank"
+              rel="noopener noreferrer"
               class="social-link"
+              aria-label="LinkedIn"
+              data-aos="fade-up"
+              data-aos-delay="650"
             >
               <font-awesome-icon :icon="['fab', 'linkedin']" />
             </a>
-
-            <a
-              href="https://www.strava.com/athletes/49283795"
-              target="_blank"
-              class="social-link"
-            >
-              <font-awesome-icon :icon="['fab', 'strava']" />
-            </a>
           </div>
         </div>
-
-        <!-- <form
-          class="contact-form"
-          data-aos="fade-up"
-          data-aos-delay="100"
-          @submit.prevent="handleSubmit"
-        >
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" v-model="form.name" required />
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" v-model="form.email" required />
-          </div>
-
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" v-model="form.subject" required />
-          </div>
-
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea
-              id="message"
-              v-model="form.message"
-              rows="5"
-              required
-            ></textarea>
-          </div>
-
-          <button type="submit" class="submit-btn">
-            <font-awesome-icon :icon="['fas', 'paper-plane']" /> Send Message
-          </button>
-        </form> -->
       </div>
+    </div>
+
+    <div class="contact-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
     </div>
   </section>
 </template>
@@ -114,183 +78,229 @@
 <script>
 export default {
   name: "ContactSection",
-  data() {
-    return {
-      form: {
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      },
-    };
-  },
-  methods: {
-    handleSubmit() {
-      // Handle form submission
-      console.log("Form submitted:", this.form);
-      // Reset form
-      this.form = {
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      };
-    },
-  },
 };
 </script>
 
 <style scoped>
 .contact-section {
-  padding: 80px 0;
+  padding: 100px 0;
   background-color: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
 }
 
-.contact-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  margin-top: 3rem;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 4rem;
 }
 
-.contact-info {
-  background-color: var(--bg-secondary);
-  padding: 2rem;
-  border-radius: 1rem;
-  border: 1px solid var(--accent-color);
+.section-subtitle {
+  display: inline-block;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  background: rgba(58, 134, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
 }
 
-.info-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.section-description {
+  color: var(--text-secondary);
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.contact-info-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-subheading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 1rem;
+  text-align: center;
 }
 
-.info-icon {
-  width: 40px;
-  height: 40px;
-  background-color: var(--primary-color);
+.contact-subheading::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--bg-gradient);
+  border-radius: var(--border-radius);
+}
+
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  background-color: var(--bg-card-hover);
+  border-color: var(--primary-color);
+}
+
+.info-icon-wrapper {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
+  background: var(--bg-gradient);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 5px 15px rgba(58, 134, 255, 0.2);
+}
+
+.info-icon {
+  color: white;
   font-size: 1.2rem;
-  color: var(--text-primary);
 }
 
-.info-details h3 {
+.info-details {
+  flex-grow: 1;
+}
+
+.info-details h4 {
   font-size: 1.1rem;
+  font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
-.info-details p {
+.info-details p,
+.info-details a {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  line-height: 1.5;
+  display: block;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.info-details a:hover {
+  color: var(--primary-color);
+}
+
+.social-connect {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.social-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
 }
 
 .social-links {
   display: flex;
   gap: 1rem;
-  margin-top: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .social-link {
-  width: 40px;
-  height: 40px;
-  background-color: var(--primary-color);
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
+  background-color: var(--bg-card);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   font-size: 1.2rem;
-  transition: all 0.3s ease;
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .social-link:hover {
-  background-color: var(--highlight);
-  transform: translateY(-2px);
+  transform: translateY(-5px);
+  color: white;
+  box-shadow: var(--shadow-md);
 }
 
-.contact-form {
-  background-color: var(--bg-secondary);
-  padding: 2rem;
-  border-radius: 1rem;
-  border: 1px solid var(--accent-color);
+.social-link:nth-child(1):hover {
+  background-color: #333;
+  border-color: #333;
 }
 
-.form-group {
-  margin-bottom: 1.5rem;
+.social-link:nth-child(2):hover {
+  background-color: #0077b5;
+  border-color: #0077b5;
 }
 
-label {
-  display: block;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
+.social-link:nth-child(3):hover {
+  background-color: #1877f2;
+  border-color: #1877f2;
 }
 
-input,
-textarea {
-  width: 100%;
-  padding: 0.8rem;
-  border-radius: 0.5rem;
-  border: 1px solid var(--accent-color);
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  font-size: 1rem;
-  transition: all 0.3s ease;
+.contact-shapes .shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.15;
+  z-index: 0;
 }
 
-input:focus,
-textarea:focus {
-  outline: none;
-  border-color: var(--highlight);
-  box-shadow: 0 0 0 2px rgba(128, 128, 128, 0.1);
+.shape-1 {
+  background: var(--primary-color);
+  width: 300px;
+  height: 300px;
+  top: 20%;
+  right: -100px;
 }
 
-.submit-btn {
-  background-color: var(--primary-color);
-  color: var(--text-primary);
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.submit-btn:hover {
-  background-color: var(--highlight);
-  transform: translateY(-2px);
+.shape-2 {
+  background: var(--secondary-color);
+  width: 400px;
+  height: 400px;
+  bottom: -150px;
+  left: -150px;
 }
 
 @media (max-width: 768px) {
-  .contact-content {
+  .info-cards {
     grid-template-columns: 1fr;
-    gap: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .contact-section {
+    padding: 60px 0;
   }
 
-  .contact-info,
-  .contact-form {
-    padding: 1.5rem;
-  }
-
-  .info-item {
-    margin-bottom: 1rem;
-  }
-
-  .social-links {
-    justify-content: center;
+  .info-card {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 </style>

@@ -1,11 +1,16 @@
 <template>
   <section id="certificates" class="certificates-section">
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">Certificates</h2>
+      <h2 class="section-title" data-aos="fade-up">Certificates.</h2>
 
       <div class="certificates-grid">
         ...
-        <!-- <div class="certificate-card" v-for="certificate in certificates" :key="certificate.title" data-aos="fade-up">
+        <!-- <div
+          class="certificate-card"
+          v-for="certificate in certificates"
+          :key="certificate.title"
+          data-aos="fade-up"
+        >
           <div class="certificate-image">
             <img :src="certificate.image" :alt="certificate.title" />
           </div>

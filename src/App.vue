@@ -44,14 +44,32 @@ export default {
 <style>
 /* Global Styles */
 :root {
-  --primary-color: #2d2d2d;
-  --secondary-color: #404040;
-  --accent-color: #666666;
+  /* Modern color palette */
+  --primary-color: #3a86ff;
+  --secondary-color: #8338ec;
+  --accent-color: #ff006e;
+  --accent-light: #ffbe0b;
+  --accent-dark: #fb5607;
   --text-primary: #ffffff;
-  --text-secondary: #cccccc;
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #262626;
-  --highlight: #808080;
+  --text-secondary: #e2e2e2;
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-card: #252525;
+  --bg-card-hover: #2d2d2d;
+  --bg-gradient: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.25);
+  --border-radius-sm: 4px;
+  --border-radius: 8px;
+  --border-radius-lg: 16px;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --transition: all 0.3s ease;
 }
 
 * {
@@ -66,18 +84,18 @@ html {
 }
 
 body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  line-height: 1.6;
+  font-family: var(--font-sans);
+  line-height: 1.7;
   color: var(--text-primary);
   background-color: var(--bg-primary);
+  font-size: 16px;
 }
 
 #app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding-top: 80px;
+  padding-top: 15px;
 }
 
 main {
@@ -85,72 +103,170 @@ main {
 }
 
 section {
-  padding: 80px 0;
+  padding: 100px 0;
   overflow: hidden;
-  background-color: var(--bg-secondary);
+  position: relative;
 }
 
 section:nth-child(even) {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
 }
 
 .section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 2rem;
+  font-size: 2.75rem;
+  font-weight: 800;
+  background: var(--bg-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 2.5rem;
   position: relative;
   display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .section-title::after {
   content: "";
   position: absolute;
   bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 3px;
-  background-color: var(--highlight);
-  border-radius: 3px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--bg-gradient);
+  border-radius: var(--border-radius);
 }
 
-/* Utility Classes */
-.text-primary {
-  color: var(--text-primary) !important;
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-.bg-primary {
-  background-color: var(--primary-color) !important;
-}
-
+/* Buttons */
 .btn {
-  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  box-shadow: var(--shadow-sm);
+  gap: 0.5rem;
 }
 
 .btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 
-/* Responsive Typography */
+.btn:active {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+}
+
+.btn-outline-primary {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary-color);
+  color: var(--text-primary);
+}
+
+/* Cards */
+.card {
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  overflow: hidden;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  background-color: var(--bg-card-hover);
+}
+
+/* Text styling */
+.text-highlight {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.text-gradient {
+  background: var(--bg-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Grid system */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 2rem;
+}
+
+/* Responsive utilities */
+@media (max-width: 992px) {
+  .section-title {
+    font-size: 2.25rem;
+  }
+}
+
 @media (max-width: 768px) {
   .section-title {
     font-size: 2rem;
   }
+  section {
+    padding: 70px 0;
+  }
 }
 
-/* Animation Classes */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
+@media (max-width: 576px) {
+  .section-title {
+    font-size: 1.75rem;
+  }
+  section {
+    padding: 50px 0;
+  }
 }
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-/* Scrollbar Styling */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -160,75 +276,11 @@ section:nth-child(even) {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--highlight);
+  background: var(--primary-color);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-color);
-}
-
-/* Bootstrap Overrides */
-.container {
-  max-width: 1200px;
-  padding: 0 1rem;
-  margin: 0 auto;
-}
-
-.row {
-  margin-right: -1rem;
-  margin-left: -1rem;
-}
-
-.col,
-[class*="col-"] {
-  padding-right: 1rem;
-  padding-left: 1rem;
-}
-
-/* Button Styles */
-.btn-primary {
-  background-color: var(--primary-color) !important;
-  border-color: var(--primary-color) !important;
-  color: var(--text-primary) !important;
-}
-
-.btn-primary:hover {
-  background-color: var(--secondary-color) !important;
-  border-color: var(--secondary-color) !important;
-}
-
-.btn-outline-primary {
-  border-color: var(--primary-color) !important;
-  color: var(--text-primary) !important;
-}
-
-.btn-outline-primary:hover {
-  background-color: var(--primary-color) !important;
-  color: var(--text-primary) !important;
-}
-
-/* Card Styles */
-.card {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--accent-color);
-  border-radius: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Link Styles */
-a {
-  color: var(--text-primary);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: var(--highlight);
+  background: var(--secondary-color);
 }
 </style>

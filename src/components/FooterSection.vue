@@ -1,228 +1,319 @@
 <template>
   <footer class="footer-section">
+    <div class="footer-waves">
+      <svg
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+          class="shape-fill"
+        ></path>
+      </svg>
+    </div>
+
     <div class="container">
-      <div class="footer-content">
+      <div class="footer-grid">
         <div class="footer-brand">
           <a href="#" class="footer-brand-link">
-            <img src="/icons/logomain.png" alt="JG logo" />
+            <img src="/icons/logomain.png" alt="JG logo" class="footer-logo" />
           </a>
 
-          <p class="footer-description">
+          <p class="footer-tagline">
             Building the future through code, one line at a time.
           </p>
         </div>
-
-        <!-- <div class="footer-links">
-          <div class="link-group">
-            <h4>Navigation</h4>
-            <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#skills">Skills</a></li>
-              <li><a href="#experience">Experience</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#education">Education</a></li>
-              <li><a href="#certificates">Certificates</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-
-          <div class="link-group">
-            <h4>Connect</h4>
-            <ul>
-              <li>
-                <a href="https://github.com/yourusername" target="_blank">
-                  <font-awesome-icon :icon="['fab', 'github']" /> GitHub
-                </a>
-              </li>
-              <li>
-                <a href="https://linkedin.com/in/yourusername" target="_blank">
-                  <font-awesome-icon :icon="['fab', 'linkedin']" /> LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href="https://strava.com/athletes/yourusername" target="_blank">
-                  <font-awesome-icon :icon="['fab', 'strava']" /> Strava
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="link-group">
-            <h4>Contact</h4>
-            <ul>
-              <li>
-                <font-awesome-icon :icon="['fas', 'envelope']" />
-                your.email@example.com
-              </li>
-              <li>
-                <font-awesome-icon :icon="['fas', 'phone']" />
-                +63 912 345 6789
-              </li>
-              <li>
-                <font-awesome-icon :icon="['fas', 'location-dot']" />
-                Manila, Philippines
-              </li>
-            </ul>
-          </div>
-        </div> -->
       </div>
 
       <div class="footer-bottom">
-        <p>
-          &copy; {{ new Date().getFullYear() }} Jayson Gomba. All rights
-          reserved.
-        </p>
+        <div class="copyright">
+          &copy; {{ currentYear }} Jayson Gomba. All rights reserved.
+        </div>
       </div>
     </div>
+
+    <button
+      @click="scrollToTop"
+      class="scroll-top-btn"
+      :class="{ visible: showScrollButton }"
+    >
+      <font-awesome-icon icon="chevron-up" />
+    </button>
   </footer>
 </template>
 
 <script>
 export default {
   name: "FooterSection",
+  data() {
+    return {
+      currentYear: new Date().getFullYear(),
+      showScrollButton: false,
+    };
+  },
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
+  methods: {
+    handleScroll() {
+      this.showScrollButton = window.scrollY > 500;
+    },
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    },
+  },
 };
 </script>
 
 <style scoped>
 .footer-section {
   background-color: var(--bg-secondary);
-  padding: 60px 0 20px;
-  border-top: 1px solid var(--accent-color);
+  padding: 120px 0 40px;
+  position: relative;
 }
 
-.footer-content {
+.footer-waves {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.footer-waves svg {
+  position: relative;
+  display: block;
+  width: calc(130% + 1.3px);
+  height: 80px;
+}
+
+.footer-waves .shape-fill {
+  fill: var(--bg-primary);
+}
+
+.footer-grid {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .footer-brand {
-  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .footer-brand-link {
   display: inline-block;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.footer-brand-link:hover {
-  opacity: 0.8;
-}
-
-.footer-brand-link img {
-  height: 40px;
-  width: auto;
-  vertical-align: middle;
 }
 
 .footer-logo {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
+  height: 50px;
+  width: auto;
 }
 
-.footer-description {
+.footer-tagline {
+  font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.6;
 }
 
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: var(--transition);
+  font-size: 1.1rem;
+}
+
+.social-link:hover {
+  transform: translateY(-5px);
+  color: white;
+}
+
+.social-link:nth-child(1):hover {
+  background-color: #333;
+}
+
+.social-link:nth-child(2):hover {
+  background-color: #0077b5;
+}
+
+.social-link:nth-child(3):hover {
+  background-color: #1877f2;
+}
+
 .footer-links {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 }
 
-.link-group h4 {
+.link-title {
   color: var(--text-primary);
   font-size: 1.1rem;
-  margin-bottom: 1rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
   position: relative;
-  display: inline-block;
+  padding-bottom: 0.75rem;
 }
 
-.link-group h4::after {
+.link-title::after {
   content: "";
   position: absolute;
-  bottom: -5px;
   left: 0;
-  width: 30px;
+  bottom: 0;
+  width: 40px;
   height: 2px;
-  background-color: var(--highlight);
-  border-radius: 2px;
+  background: var(--bg-gradient);
 }
 
-.link-group ul {
+.link-list,
+.contact-list {
   list-style: none;
   padding: 0;
 }
 
-.link-group li {
-  margin-bottom: 0.8rem;
+.link-list li,
+.contact-list li {
+  margin-bottom: 0.75rem;
 }
 
-.link-group a {
+.footer-link {
   color: var(--text-secondary);
   text-decoration: none;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+  transition: var(--transition);
+  font-size: 0.95rem;
 }
 
-.link-group a:hover {
-  color: var(--highlight);
-  transform: translateX(5px);
+.footer-link:hover {
+  color: var(--primary-color);
+  padding-left: 5px;
 }
 
-.link-group li:not(a) {
-  color: var(--text-secondary);
+.contact-list li {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.contact-icon {
+  color: var(--primary-color);
+  font-size: 1rem;
 }
 
 .footer-bottom {
-  padding-top: 2rem;
-  border-top: 1px solid var(--accent-color);
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.copyright,
+.footer-note {
   color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
-.footer-bottom p {
-  margin-bottom: 0.5rem;
+.heart-icon {
+  color: var(--accent-color);
+  animation: heartBeat 1.5s infinite;
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.scroll-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--bg-gradient);
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 999;
+  box-shadow: var(--shadow-md);
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+  transform: translateY(-5px);
+}
+
+@media (max-width: 992px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
 }
 
 @media (max-width: 768px) {
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .footer-brand {
-    padding-right: 0;
-    text-align: center;
+  .footer-section {
+    padding-top: 100px;
   }
 
   .footer-links {
     grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
     text-align: center;
-  }
-
-  .link-group h4::after {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .link-group a {
-    justify-content: center;
-  }
-
-  .link-group li:not(a) {
-    justify-content: center;
   }
 }
 </style>

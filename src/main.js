@@ -1,20 +1,25 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import App from "./App.vue";
+
+/* import animation libraries */
+import AOS from "aos";
+import "aos/dist/aos.css";
+import "animate.css";
 
 /* import the fontawesome core */
-import { library } from '@fortawesome/fontawesome-svg-core'
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import { config } from '@fortawesome/fontawesome-svg-core'
-config.autoAddCss = false
+import { library } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
 
 /* import font awesome icon component */
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 /* import specific icons */
-import { 
-  faUserCircle, 
-  faQuoteLeft, 
-  faDownload, 
+import {
+  faUserCircle,
+  faQuoteLeft,
+  faDownload,
   faEnvelope,
   faExternalLinkAlt,
   faCode,
@@ -23,8 +28,21 @@ import {
   faDatabase,
   faServer,
   faPhone,
-  faLocationDot
-} from '@fortawesome/free-solid-svg-icons'
+  faLocationDot,
+  faToolbox,
+  faChevronDown,
+  faChevronUp,
+  faChevronRight,
+  faHeart,
+  faSync,
+  faPalette,
+  faRocket,
+  faCloudUploadAlt,
+  faTasks,
+  faBrain,
+  faRobot,
+  faLightbulb,
+} from "@fortawesome/free-solid-svg-icons";
 
 import {
   faGithub,
@@ -42,14 +60,14 @@ import {
   faNpm,
   faFigma,
   faMicrosoft,
-  faStrava
-} from '@fortawesome/free-brands-svg-icons'
+  faStrava,
+} from "@fortawesome/free-brands-svg-icons";
 
 /* add icons to the library */
 library.add(
-  faUserCircle, 
-  faQuoteLeft, 
-  faDownload, 
+  faUserCircle,
+  faQuoteLeft,
+  faDownload,
   faEnvelope,
   faExternalLinkAlt,
   faCode,
@@ -59,6 +77,19 @@ library.add(
   faServer,
   faPhone,
   faLocationDot,
+  faToolbox,
+  faChevronDown,
+  faChevronUp,
+  faChevronRight,
+  faHeart,
+  faSync,
+  faPalette,
+  faRocket,
+  faCloudUploadAlt,
+  faTasks,
+  faBrain,
+  faRobot,
+  faLightbulb,
   faGithub,
   faLinkedin,
   faFacebook,
@@ -75,8 +106,10 @@ library.add(
   faFigma,
   faMicrosoft,
   faStrava
-)
+);
 
-const app = createApp(App)
-app.component('font-awesome-icon', FontAwesomeIcon)
-app.mount('#app')
+const app = createApp(App);
+app.component("font-awesome-icon", FontAwesomeIcon);
+app.mount("#app");
+
+AOS.init();
