@@ -16,7 +16,7 @@
         <div class="stats-container">
           <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
             <div class="stat-icon">
-              <font-awesome-icon :icon="['fas', 'code']" />
+              <font-awesome-icon icon="code" />
             </div>
             <div class="stat-number">47K+</div>
             <div class="stat-label">Lines of Code</div>
@@ -24,7 +24,7 @@
 
           <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
             <div class="stat-icon">
-              <font-awesome-icon :icon="['fas', 'laptop-code']" />
+              <font-awesome-icon icon="laptop-code" />
             </div>
             <div class="stat-number">7+</div>
             <div class="stat-label">Projects Completed</div>
@@ -32,7 +32,7 @@
 
           <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
             <div class="stat-icon">
-              <font-awesome-icon :icon="['fas', 'mug-hot']" />
+              <font-awesome-icon icon="mug-hot" />
             </div>
             <div class="stat-number">500+</div>
             <div class="stat-label">Coffee Hours</div>
@@ -41,10 +41,10 @@
 
         <div class="cta-buttons" data-aos="fade-up" data-aos-delay="400">
           <a href="/resume.pdf" class="btn btn-primary download-btn" download>
-            <font-awesome-icon :icon="['fas', 'download']" /> Download Resume
+            <font-awesome-icon icon="download" /> download resume
           </a>
           <a href="#contact" class="btn btn-outline-primary contact-btn">
-            <font-awesome-icon :icon="['fas', 'envelope']" /> Contact Me
+            <font-awesome-icon icon="envelope" /> contact me
           </a>
         </div>
       </div>
@@ -53,8 +53,13 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
 export default {
   name: "HeroSection",
+  components: {
+    FontAwesomeIcon,
+  },
 };
 </script>
 

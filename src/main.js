@@ -1,30 +1,35 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-/* Import Font Awesome core */
+/* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+import { config } from '@fortawesome/fontawesome-svg-core'
+config.autoAddCss = false
+
+/* import font awesome icon component */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-/* Import specific icons */
+/* import specific icons */
 import { 
-  faCode, 
-  faLaptopCode, 
-  faMugHot,
-  faDownload,
+  faUserCircle, 
+  faQuoteLeft, 
+  faDownload, 
   faEnvelope,
-  faPhone,
-  faLocationDot,
-  faPaperPlane,
   faExternalLinkAlt,
+  faCode,
+  faLaptopCode,
+  faMugHot,
+  faDatabase,
   faServer,
-  faDatabase
+  faPhone,
+  faLocationDot
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
   faGithub,
   faLinkedin,
-  faInstagram,
-  faStrava,
+  faFacebook,
   faHtml5,
   faCss3Alt,
   faJs,
@@ -35,26 +40,28 @@ import {
   faWordpress,
   faGitAlt,
   faNpm,
-  faFigma
+  faFigma,
+  faMicrosoft,
+  faStrava
 } from '@fortawesome/free-brands-svg-icons'
 
-/* Add icons to the library */
+/* add icons to the library */
 library.add(
+  faUserCircle, 
+  faQuoteLeft, 
+  faDownload, 
+  faEnvelope,
+  faExternalLinkAlt,
   faCode,
   faLaptopCode,
   faMugHot,
-  faDownload,
-  faEnvelope,
+  faDatabase,
+  faServer,
   faPhone,
   faLocationDot,
-  faPaperPlane,
-  faExternalLinkAlt,
-  faServer,
-  faDatabase,
   faGithub,
   faLinkedin,
-  faInstagram,
-  faStrava,
+  faFacebook,
   faHtml5,
   faCss3Alt,
   faJs,
@@ -65,12 +72,11 @@ library.add(
   faWordpress,
   faGitAlt,
   faNpm,
-  faFigma
+  faFigma,
+  faMicrosoft,
+  faStrava
 )
 
 const app = createApp(App)
-
-/* Add Font Awesome component */
 app.component('font-awesome-icon', FontAwesomeIcon)
-
 app.mount('#app')

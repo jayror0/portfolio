@@ -25,8 +25,10 @@
               >
               <div class="project-links">
                 <a
+                  v-if="project.demo"
                   :href="project.demo"
                   target="_blank"
+                  rel="noopener noreferrer"
                   class="project-link demo"
                 >
                   <font-awesome-icon :icon="['fas', 'external-link-alt']" />
@@ -42,8 +44,13 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
 export default {
   name: "ProjectsSection",
+  components: {
+    FontAwesomeIcon,
+  },
   data() {
     return {
       projects: [
@@ -61,6 +68,7 @@ export default {
             "AJAX",
           ],
           demo: "https://placehub.bsit3a2025.com/",
+          github: "https://github.com/jayrsoftware/placehub",
         },
         {
           title: "Portfolio Website",
@@ -68,7 +76,8 @@ export default {
             "A modern portfolio website built with Vue.js and featuring smooth animations and dark mode.",
           image: "/project-images/port1.png",
           technologies: ["Vue.js", "Bootstrap 5.3", "AOS", "JS"],
-          demo: "http://localhost:8080/#home",
+          demo: "https://portfolio-kngcssg9t-jysngombas-projects.vercel.app/",
+          github: "https://github.com/jayrsoftware/portfolio",
         },
       ],
     };

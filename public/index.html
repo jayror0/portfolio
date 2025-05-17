@@ -1,28 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="icon" href="<%= BASE_URL %>logomain.ico" />
-    <title>Jayson Gomba - Portfolio</title>
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>logomain.ico">
+    <title>Jayson Gomba | Web Developer</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Jayson Gomba - A passionate BSIT student and web developer, creating innovative web solutions and turning ideas into reality through code.">
+    <meta name="keywords" content="web developer, BSIT student, Vue.js, JavaScript, PHP, MySQL, portfolio">
+    <meta name="author" content="Jayson Gomba">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Jayson Gomba | Web Developer">
+    <meta property="og:description" content="A passionate BSIT student and web developer, creating innovative web solutions.">
+    <meta property="og:image" content="<%= BASE_URL %>icons/logomain.png">
+    <meta property="og:url" content="https://jayson-gomba.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jayson Gomba | Web Developer">
+    <meta name="twitter:description" content="A passionate BSIT student and web developer, creating innovative web solutions.">
+    <meta name="twitter:image" content="<%= BASE_URL %>icons/logomain.png">
+    
+    <!-- Theme Color for Mobile Browsers -->
+    <meta name="theme-color" content="#1a1a1a">
   </head>
   <body>
     <noscript>
-      <strong
-        >We're sorry but this website doesn't work properly without JavaScript
-        enabled. Please enable it to continue.</strong
-      >
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->

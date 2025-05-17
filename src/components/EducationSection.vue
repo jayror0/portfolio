@@ -4,9 +4,6 @@
       <h2 class="section-title" data-aos="fade-up">Education</h2>
 
       <div class="education-card" data-aos="fade-up">
-        <div class="school-logo">
-          <img src="/school-logos/bsit-logo.png" alt="BSIT Logo" />
-        </div>
         <div class="education-content">
           <h3 class="degree">Bachelor of Science in Information Technology</h3>
           <h4 class="school">
@@ -191,5 +188,9 @@ export default {
   .courses-grid {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
+}
+
+section {
+  transition: background-color 0.5s, box-shadow 0.5s;
 }
 </style>

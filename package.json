@@ -12,9 +12,6 @@
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/vue-fontawesome": "^3.0.8",
-    "@popperjs/core": "^2.11.8",
-    "aos": "^2.3.4",
-    "bootstrap": "^5.3.2",
     "core-js": "^3.8.3",
     "vue": "^3.2.13"
   },

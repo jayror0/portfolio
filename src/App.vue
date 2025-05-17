@@ -15,18 +15,18 @@
 </template>
 
 <script>
-import NavigationBar from './components/NavigationBar.vue'
-import HeroSection from './components/HeroSection.vue'
-import SkillsSection from './components/SkillsSection.vue'
-import ExperienceSection from './components/ExperienceSection.vue'
-import ProjectsSection from './components/ProjectsSection.vue'
-import EducationSection from './components/EducationSection.vue'
-import CertificatesSection from './components/CertificatesSection.vue'
-import ContactSection from './components/ContactSection.vue'
-import FooterSection from './components/FooterSection.vue'
+import NavigationBar from "./components/NavigationBar.vue";
+import HeroSection from "./components/HeroSection.vue";
+import SkillsSection from "./components/SkillsSection.vue";
+import ExperienceSection from "./components/ExperienceSection.vue";
+import ProjectsSection from "./components/ProjectsSection.vue";
+import EducationSection from "./components/EducationSection.vue";
+import CertificatesSection from "./components/CertificatesSection.vue";
+import ContactSection from "./components/ContactSection.vue";
+import FooterSection from "./components/FooterSection.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     NavigationBar,
     HeroSection,
@@ -36,9 +36,9 @@ export default {
     EducationSection,
     CertificatesSection,
     ContactSection,
-    FooterSection
-  }
-}
+    FooterSection,
+  },
+};
 </script>
 
 <style>
@@ -66,8 +66,8 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   line-height: 1.6;
   color: var(--text-primary);
   background-color: var(--bg-primary);
@@ -104,7 +104,7 @@ section:nth-child(even) {
 }
 
 .section-title::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -180,7 +180,8 @@ section:nth-child(even) {
   margin-left: -1rem;
 }
 
-.col, [class*="col-"] {
+.col,
+[class*="col-"] {
   padding-right: 1rem;
   padding-left: 1rem;
 }
