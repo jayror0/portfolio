@@ -93,7 +93,7 @@ export default {
             "jQuery",
             "AJAX",
           ],
-          demo: "https://placehub.bsit3a2025.com/",
+          demo: "https://placehub.bsit3a2025.com",
           isHovered: false,
         },
         {
@@ -102,7 +102,16 @@ export default {
             "A modern portfolio website built with Vue.js featuring smooth animations, responsive design, and dark mode. Created to showcase my projects and skills.",
           image: "/project-images/port1.png",
           technologies: ["Vue.js", "Bootstrap 5.3", "AOS", "JavaScript"],
-          demo: "https://portfolio-steel-nu-62.vercel.app/",
+          demo: "https://portfolio-brown-tau-59.vercel.app",
+          isHovered: false,
+        },
+        {
+          title: "Organization Website",
+          description:
+            "A responsive website for an organization, showcasing its mission, vision, and services. Built with a focus on user engagement and modern design principles.",
+          image: "/project-images/Screenshot 2025-05-18 193541.png",
+          technologies: ["PHP", "Bootstrap 5.3", "HTML", "CSS", "JavaScript"],
+          demo: "https://access-department-theta.vercel.app",
           isHovered: false,
         },
       ],
