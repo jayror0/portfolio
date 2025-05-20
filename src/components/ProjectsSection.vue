@@ -1,7 +1,7 @@
 <template>
-  <section id="projects" class="projects-section">
+  <section id="projects" class="projects-section py-20">
     <div class="container">
-      <div class="section-header" data-aos="fade-up">
+      <div class="section-header">
         <span class="section-subtitle">My Recent Work</span>
         <h2 class="section-title">Featured Projects</h2>
         <p class="section-description">
@@ -14,10 +14,8 @@
       <div class="projects-grid">
         <div
           class="project-card"
-          v-for="(project, index) in displayedProjects"
+          v-for="project in displayedProjects"
           :key="project.title"
-          :data-aos="index % 2 === 0 ? 'fade-right' : 'fade-left'"
-          :data-aos-delay="300 + index * 100"
           @mouseenter="project.isHovered = true"
           @mouseleave="project.isHovered = false"
         >
@@ -56,7 +54,7 @@
         </div>
       </div>
 
-      <div v-if="hasMoreProjects" class="see-more-container" data-aos="fade-up">
+      <div v-if="hasMoreProjects" class="see-more-container">
         <button @click="showAllProjects" class="see-more-btn">
           <span>See More Projects</span>
           <font-awesome-icon :icon="['fas', 'chevron-down']" />
@@ -189,7 +187,6 @@ export default {
 }
 
 .project-card:hover {
-  transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
   border-color: rgba(58, 134, 255, 0.2);
 }
@@ -292,7 +289,6 @@ export default {
 }
 
 .project-link:hover {
-  transform: translateY(-3px);
   box-shadow: var(--shadow-md);
 }
 
@@ -318,7 +314,6 @@ export default {
 }
 
 .see-more-btn:hover {
-  transform: translateY(-3px);
   box-shadow: var(--shadow-md);
 }
 

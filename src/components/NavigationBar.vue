@@ -21,14 +21,12 @@
 
       <div class="navbar-menu" :class="{ active: isMenuOpen }">
         <ul class="nav-links">
-          <li v-for="(item, index) in navItems" :key="item.id">
+          <li v-for="item in navItems" :key="item.id">
             <a
               :href="item.href"
               @click="closeMenu"
               class="nav-link"
               :class="{ active: activeSection === item.id }"
-              :data-aos="'fade-down'"
-              :data-aos-delay="100 + index * 50"
             >
               {{ item.text }}
               <span class="nav-link-highlight"></span>
@@ -75,12 +73,12 @@ export default {
   methods: {
     handleScroll() {
       const scrollPosition = window.scrollY;
-
       this.isScrolled = scrollPosition > 20;
 
+      // Improved section detection
       const currentSection = this.sections
         .map((section) => {
-          const sectionTop = section.offsetTop - 100;
+          const sectionTop = section.offsetTop - 150; // Adjusted offset
           const sectionHeight = section.offsetHeight;
           const sectionId = section.getAttribute("id");
 
@@ -107,7 +105,23 @@ export default {
         document.body.style.overflow = "";
       }
     },
-    closeMenu() {
+    closeMenu(event) {
+      if (event) {
+        event.preventDefault();
+        const href = event.target.getAttribute("href");
+        if (href) {
+          const targetElement = document.querySelector(href);
+          if (targetElement) {
+            const offset = 80; // Adjusted offset for header
+            const targetPosition = targetElement.offsetTop - offset;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: "smooth",
+            });
+          }
+        }
+      }
+
       if (this.isMenuOpen) {
         this.isMenuOpen = false;
         document.body.style.overflow = "";
@@ -232,7 +246,6 @@ export default {
 
 .social-link:hover {
   color: var(--primary-color);
-  transform: translateY(-3px);
 }
 
 .nav-toggle {

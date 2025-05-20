@@ -1,7 +1,7 @@
 <template>
-  <section id="skills" class="skills-section">
+  <section id="skills" class="skills-section py-20">
     <div class="container">
-      <div class="section-header" data-aos="fade-up">
+      <div class="section-header">
         <span class="section-subtitle">What I Work With</span>
         <h2 class="section-title">My Technical Skills</h2>
         <p class="section-description">
@@ -11,31 +11,27 @@
         </p>
       </div>
 
-      <div class="skills-tabs" data-aos="fade-up" data-aos-delay="200">
+      <div class="skills-tabs">
         <button
-          v-for="(tab, index) in tabs"
+          v-for="tab in tabs"
           :key="tab.id"
           @click="activeTab = tab.id"
           class="tab-button"
           :class="{ active: activeTab === tab.id }"
-          :data-aos-delay="200 + index * 50"
         >
           <font-awesome-icon :icon="tab.icon" class="tab-icon" />
           <span>{{ tab.name }}</span>
         </button>
       </div>
-
-      <div class="skills-content" data-aos="fade-up" data-aos-delay="300">
+      <div class="skills-content">
         <!-- Frontend Skills -->
         <div class="skills-grid" v-show="activeTab === 'frontend'">
           <div class="skill-category-title">Frontend Development</div>
           <div class="skills-list">
             <div
               class="skill-card"
-              v-for="(skill, index) in frontendSkills"
+              v-for="skill in frontendSkills"
               :key="skill.name"
-              :data-aos="'fade-up'"
-              :data-aos-delay="300 + index * 50"
             >
               <div class="skill-icon-wrapper">
                 <font-awesome-icon :icon="skill.icon" class="skill-icon" />
@@ -51,10 +47,8 @@
           <div class="skills-list">
             <div
               class="skill-card"
-              v-for="(skill, index) in backendSkills"
+              v-for="skill in backendSkills"
               :key="skill.name"
-              :data-aos="'fade-up'"
-              :data-aos-delay="300 + index * 50"
             >
               <div class="skill-icon-wrapper">
                 <font-awesome-icon :icon="skill.icon" class="skill-icon" />
@@ -70,10 +64,8 @@
           <div class="skills-list">
             <div
               class="skill-card"
-              v-for="(skill, index) in toolsSkills"
+              v-for="skill in toolsSkills"
               :key="skill.name"
-              :data-aos="'fade-up'"
-              :data-aos-delay="300 + index * 50"
             >
               <div class="skill-icon-wrapper">
                 <font-awesome-icon :icon="skill.icon" class="skill-icon" />
@@ -83,11 +75,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="tech-waves">
-      <div class="wave wave1"></div>
-      <div class="wave wave2"></div>
     </div>
   </section>
 </template>
@@ -127,10 +114,6 @@ export default {
         {
           name: "jQuery",
           icon: ["fab", "js"],
-        },
-        {
-          name: "AJAX",
-          icon: ["fas", "sync"],
         },
       ],
       backendSkills: [
@@ -261,16 +244,14 @@ export default {
 }
 
 .tab-button:hover {
-  transform: translateY(-2px);
   box-shadow: var(--shadow-sm);
 }
 
 .tab-button.active {
-  background: var(--bg-gradient);
+  background: var(--primary-color);
   color: white;
   border-color: transparent;
   box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
 }
 
 .tab-icon {
@@ -312,7 +293,6 @@ export default {
 }
 
 .skill-card:hover {
-  transform: translateY(-5px);
   background-color: var(--bg-card-hover);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   border-color: var(--primary-color);
@@ -322,7 +302,7 @@ export default {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: var(--bg-gradient);
+  background: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -344,51 +324,6 @@ export default {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--text-primary);
-}
-
-.tech-waves {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 150px;
-  overflow: hidden;
-}
-
-.wave {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 200%;
-  height: 100px;
-  background: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 120' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'><path d='M0 0v46.29c47.79 22.2 103.59 32.17 158 28 70.36-5.37 136.33-33.31 206.8-37.5 73.84-4.36 147.54 16.88 218.2 35.26 69.27 18 138.3 24.88 209.4 13.08 36.15-6 69.85-17.84 104.45-29.34C989.49 25 1113-14.29 1200 52.47V0z' fill='%23252525' opacity='.25'/></svg>");
-  background-size: 1200px 100px;
-  animation: wave 25s linear infinite;
-  z-index: 1;
-}
-
-.wave1 {
-  opacity: 0.3;
-  bottom: 0;
-}
-
-.wave2 {
-  opacity: 0.2;
-  bottom: 10px;
-  animation-delay: -5s;
-  animation-duration: 20s;
-}
-
-@keyframes wave {
-  0% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(-25%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
 }
 
 @media (max-width: 768px) {

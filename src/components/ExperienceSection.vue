@@ -1,11 +1,11 @@
 <template>
-  <section id="experience" class="experience-section">
+  <section id="experience" class="experience-section py-20">
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">Experience.</h2>
-      
+      <h2 class="section-title">Experience.</h2>
+
       <div class="timeline">
         ...
-        <!-- <div class="timeline-item" data-aos="fade-up">
+        <!-- <div class="timeline-item">
           <div class="timeline-content">
             <div class="company-logo">
               <img src="/company-logos/company1.png" alt="Company 1" />
@@ -28,9 +28,7 @@
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+        </div>        <div class="timeline-item">
           <div class="timeline-content">
             <div class="company-logo">
               <img src="/company-logos/company2.png" alt="Company 2" />
@@ -61,8 +59,8 @@
 
 <script>
 export default {
-  name: 'ExperienceSection'
-}
+  name: "ExperienceSection",
+};
 </script>
 
 <style scoped>
@@ -79,7 +77,7 @@ export default {
 }
 
 .timeline::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -107,9 +105,8 @@ export default {
 }
 
 .timeline-content:hover {
-  transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  border-color: var(--highlight);
+  border-color: var(--primary-color);
 }
 
 .company-logo {
@@ -135,7 +132,7 @@ export default {
 
 .company {
   font-size: 1.2rem;
-  color: var(--highlight);
+  color: var(--primary-color);
   margin-bottom: 0.5rem;
 }
 
@@ -159,10 +156,10 @@ export default {
 }
 
 .responsibilities li::before {
-  content: '•';
+  content: "•";
   position: absolute;
   left: 0;
-  color: var(--highlight);
+  color: var(--primary-color);
 }
 
 .tech-stack {
@@ -181,8 +178,7 @@ export default {
 }
 
 .tech-tag:hover {
-  background-color: var(--highlight);
-  transform: translateY(-2px);
+  background-color: var(--secondary-color);
 }
 
 @media (max-width: 768px) {
