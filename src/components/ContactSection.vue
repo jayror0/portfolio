@@ -1,7 +1,7 @@
 <template>
-  <section id="contact" class="contact-section">
+  <section id="contact" class="contact-section py-20">
     <div class="container">
-      <div class="section-header" data-aos="fade-up">
+      <div class="section-header">
         <span class="section-subtitle">Reach Out</span>
         <h2 class="section-title">Get In Touch</h2>
         <p class="section-description">
@@ -11,15 +11,11 @@
         </p>
       </div>
 
-      <div
-        class="contact-info-container"
-        data-aos="fade-up"
-        data-aos-delay="200"
-      >
+      <div class="contact-info-container">
         <h3 class="contact-subheading">Contact Information</h3>
 
         <div class="info-cards">
-          <div class="info-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="info-card">
             <div class="info-icon-wrapper">
               <font-awesome-icon
                 :icon="['fas', 'envelope']"
@@ -47,8 +43,6 @@
               rel="noopener noreferrer"
               class="social-link"
               aria-label="GitHub"
-              data-aos="fade-up"
-              data-aos-delay="600"
             >
               <font-awesome-icon :icon="['fab', 'github']" />
             </a>
@@ -58,19 +52,12 @@
               rel="noopener noreferrer"
               class="social-link"
               aria-label="LinkedIn"
-              data-aos="fade-up"
-              data-aos-delay="650"
             >
               <font-awesome-icon :icon="['fab', 'linkedin']" />
             </a>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="contact-shapes">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
     </div>
   </section>
 </template>
@@ -140,7 +127,7 @@ export default {
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
-  background: var(--bg-gradient);
+  background: var(--primary-color);
   border-radius: var(--border-radius);
 }
 
@@ -163,7 +150,6 @@ export default {
 }
 
 .info-card:hover {
-  transform: translateY(-5px);
   background-color: var(--bg-card-hover);
   border-color: var(--primary-color);
 }
@@ -172,7 +158,7 @@ export default {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: var(--bg-gradient);
+  background: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -243,7 +229,6 @@ export default {
 }
 
 .social-link:hover {
-  transform: translateY(-5px);
   color: white;
   box-shadow: var(--shadow-md);
 }
@@ -261,46 +246,5 @@ export default {
 .social-link:nth-child(3):hover {
   background-color: #1877f2;
   border-color: #1877f2;
-}
-
-.contact-shapes .shape {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.15;
-  z-index: 0;
-}
-
-.shape-1 {
-  background: var(--primary-color);
-  width: 300px;
-  height: 300px;
-  top: 20%;
-  right: -100px;
-}
-
-.shape-2 {
-  background: var(--secondary-color);
-  width: 400px;
-  height: 400px;
-  bottom: -150px;
-  left: -150px;
-}
-
-@media (max-width: 768px) {
-  .info-cards {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 576px) {
-  .contact-section {
-    padding: 60px 0;
-  }
-
-  .info-card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
 </style>

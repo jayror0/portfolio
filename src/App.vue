@@ -42,25 +42,20 @@ export default {
 </script>
 
 <style>
-/* Global Styles */
 :root {
-  /* Modern color palette */
   --primary-color: #3a86ff;
-  --secondary-color: #8338ec;
-  --accent-color: #ff006e;
+  --secondary-color: #7329db;
+  --accent-color: #7329db;
   --accent-light: #ffbe0b;
   --accent-dark: #fb5607;
   --text-primary: #ffffff;
   --text-secondary: #e2e2e2;
-  --bg-primary: #121212;
-  --bg-secondary: #1e1e1e;
-  --bg-card: #252525;
+  --bg-primary: #111111;
+  --bg-secondary: #141414;
+  --bg-tertiary: #1d1d1d;
+  --bg-quaternary: #262626;
+  --bg-card: #333333;
   --bg-card-hover: #2d2d2d;
-  --bg-gradient: linear-gradient(
-    135deg,
-    var(--primary-color),
-    var(--secondary-color)
-  );
   --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.15);
   --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.2);
   --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.25);
@@ -115,10 +110,7 @@ section:nth-child(even) {
 .section-title {
   font-size: 2.75rem;
   font-weight: 800;
-  background: var(--bg-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--primary-color);
   margin-bottom: 2.5rem;
   position: relative;
   display: inline-block;
@@ -133,11 +125,10 @@ section:nth-child(even) {
   left: 0;
   width: 60px;
   height: 4px;
-  background: var(--bg-gradient);
+  background: var(--primary-color);
   border-radius: var(--border-radius);
 }
 
-/* Container */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -145,7 +136,6 @@ section:nth-child(even) {
   padding: 0 2rem;
 }
 
-/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -166,16 +156,15 @@ section:nth-child(even) {
 }
 
 .btn:hover {
-  transform: translateY(-3px);
   box-shadow: var(--shadow-md);
 }
 
 .btn:active {
-  transform: translateY(-1px);
+  opacity: 0.9;
 }
 
 .btn-primary {
-  background: var(--bg-gradient);
+  background: var(--primary-color);
   color: var(--text-primary);
 }
 
@@ -190,7 +179,6 @@ section:nth-child(even) {
   color: var(--text-primary);
 }
 
-/* Cards */
 .card {
   background-color: var(--bg-card);
   border-radius: var(--border-radius);
@@ -202,46 +190,73 @@ section:nth-child(even) {
 }
 
 .card:hover {
-  transform: translateY(-5px);
   box-shadow: var(--shadow-md);
   background-color: var(--bg-card-hover);
 }
 
-/* Text styling */
 .text-highlight {
   color: var(--primary-color);
   font-weight: 700;
 }
 
 .text-gradient {
-  background: var(--bg-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--primary-color);
+  font-weight: bold;
 }
 
-/* Animations */
 .fade-in {
-  animation: fadeIn 1s ease-in-out;
+  opacity: 1;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Grid system */
 .grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-gap: 2rem;
 }
 
-/* Responsive utilities */
+.hero-section {
+  background-color: var(--bg-primary);
+}
+
+.skills-section {
+  background-color: var(--bg-secondary);
+}
+
+.experience-section {
+  background-color: var(--bg-tertiary);
+}
+
+.projects-section {
+  background-color: var(--bg-quaternary);
+}
+
+.education-section {
+  background-color: var(--bg-tertiary);
+}
+
+.certificates-section {
+  background-color: var(--bg-secondary);
+}
+
+.contact-section {
+  background-color: var(--bg-primary);
+}
+
+.project-card,
+.experience-card,
+.education-card,
+.certificate-card {
+  background-color: var(--bg-card);
+  transition: transform 0.2s ease;
+}
+
+.project-card:hover,
+.experience-card:hover,
+.education-card:hover,
+.certificate-card:hover {
+  transform: translateY(-4px);
+}
+
 @media (max-width: 992px) {
   .section-title {
     font-size: 2.25rem;
@@ -266,7 +281,6 @@ section:nth-child(even) {
   }
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }

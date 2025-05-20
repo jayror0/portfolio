@@ -1,9 +1,9 @@
 <template>
-  <section id="education" class="education-section">
+  <section id="education" class="education-section py-20">
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">Education.</h2>
+      <h2 class="section-title">Education.</h2>
 
-      <div class="education-card" data-aos="fade-up">
+      <div class="education-card">
         <div class="education-content">
           <h3 class="degree">Bachelor of Science in Information Technology</h3>
           <h4 class="school">
@@ -59,9 +59,8 @@ export default {
 }
 
 .education-card:hover {
-  transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  border-color: var(--highlight);
+  border-color: var(--primary-color);
 }
 
 .school-logo {
@@ -87,7 +86,7 @@ export default {
 
 .school {
   font-size: 1.3rem;
-  color: var(--highlight);
+  color: var(--primary-color);
   margin-bottom: 0.5rem;
 }
 
@@ -118,7 +117,7 @@ export default {
   left: 0;
   width: 40px;
   height: 2px;
-  background-color: var(--highlight);
+  background-color: var(--primary-color);
   border-radius: 2px;
 }
 
@@ -138,7 +137,7 @@ export default {
   content: "•";
   position: absolute;
   left: 0;
-  color: var(--highlight);
+  color: var(--primary-color);
 }
 
 .courses-grid {
@@ -158,8 +157,7 @@ export default {
 }
 
 .course:hover {
-  background-color: var(--highlight);
-  transform: translateY(-2px);
+  background-color: var(--secondary-color);
 }
 
 @media (max-width: 768px) {

@@ -1,39 +1,30 @@
 <template>
-  <section id="home" class="hero-section">
-    <div class="hero-background">
-      <div class="hero-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-      </div>
-    </div>
+  <section id="home" class="hero-section min-h-screen flex items-center">
+    <div class="hero-background"></div>
 
     <div class="container">
       <div class="hero-content">
-        <div class="greeting" data-aos="fade-up">
+        <div class="greeting">
           <span class="greeting-text">Hello, I'm</span>
         </div>
 
-        <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+        <h1 class="hero-title">
           <span class="text-gradient">Jayson Gomba</span>
-          <span
-            class="wave animate__animated animate__wobble animate__infinite animate__slow"
-            >👋</span
-          >
+          <span class="wave">👋</span>
         </h1>
 
-        <h2 class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+        <h2 class="hero-subtitle">
           <span id="type-text">Web Developer & BSIT Student</span>
           <span class="cursor">|</span>
         </h2>
 
-        <p class="hero-description" data-aos="fade-up" data-aos-delay="300">
+        <p class="hero-description">
           A passionate BSIT student and aspiring web developer, turning
           innovative ideas into reality through code. Building the future one
           line at a time.
         </p>
 
-        <div class="stats-container" data-aos="fade-up" data-aos-delay="400">
+        <div class="stats-container">
           <div class="stat-card">
             <div class="stat-icon">
               <font-awesome-icon icon="code" />
@@ -59,7 +50,7 @@
           </div>
         </div>
 
-        <div class="cta-buttons" data-aos="fade-up" data-aos-delay="500">
+        <div class="cta-buttons">
           <a href="/resume.pdf" class="btn btn-primary download-btn" download>
             <font-awesome-icon icon="download" /> Download Resume
           </a>
@@ -68,7 +59,7 @@
           </a>
         </div>
 
-        <div class="scroll-down" data-aos="fade-up" data-aos-delay="600">
+        <div class="scroll-down">
           <a href="#skills" class="scroll-link">
             <span>Scroll Down</span>
             <font-awesome-icon icon="chevron-down" class="bounce" />
@@ -157,37 +148,6 @@ export default {
   z-index: 0;
 }
 
-.hero-shapes .shape {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.15;
-}
-
-.shape-1 {
-  background: var(--primary-color);
-  width: 300px;
-  height: 300px;
-  top: -100px;
-  right: -100px;
-}
-
-.shape-2 {
-  background: var(--secondary-color);
-  width: 400px;
-  height: 400px;
-  bottom: -150px;
-  left: -150px;
-}
-
-.shape-3 {
-  background: var(--accent-color);
-  width: 200px;
-  height: 200px;
-  top: 40%;
-  right: 20%;
-}
-
 .hero-content {
   max-width: 800px;
   margin: 0 auto;
@@ -223,7 +183,35 @@ export default {
   display: inline-block;
   font-size: 3rem;
   margin-left: 0.5rem;
-  transform-origin: center;
+  transform-origin: 70% 70%;
+  animation: wave-hand 2s infinite;
+}
+
+@keyframes wave-hand {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .hero-subtitle {
@@ -286,7 +274,6 @@ export default {
 }
 
 .stat-card:hover {
-  transform: translateY(-5px);
   background-color: var(--bg-card-hover);
   border-color: rgba(58, 134, 255, 0.2);
 }
@@ -301,10 +288,7 @@ export default {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
-  background: var(--bg-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--primary-color); /* Improved contrast */
 }
 
 .stat-label {
