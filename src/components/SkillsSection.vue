@@ -126,10 +126,6 @@ export default {
           name: "MySQL",
           icon: ["fas", "database"],
         },
-        {
-          name: "WordPress",
-          icon: ["fab", "wordpress"],
-        },
       ],
       toolsSkills: [
         {
