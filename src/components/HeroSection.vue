@@ -51,7 +51,11 @@
         </div>
 
         <div class="cta-buttons">
-          <a href="/resume.pdf" class="btn btn-primary download-btn" download>
+          <a
+            href="/resume-gomba.pdf"
+            class="btn btn-primary download-btn"
+            download
+          >
             <font-awesome-icon icon="download" /> Download Resume
           </a>
           <a href="#contact" class="btn btn-outline-primary contact-btn">

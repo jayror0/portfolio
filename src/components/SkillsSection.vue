@@ -11,26 +11,13 @@
         </p>
       </div>
 
-      <div class="skills-tabs">
-        <button
-          v-for="tab in tabs"
-          :key="tab.id"
-          @click="activeTab = tab.id"
-          class="tab-button"
-          :class="{ active: activeTab === tab.id }"
-        >
-          <font-awesome-icon :icon="tab.icon" class="tab-icon" />
-          <span>{{ tab.name }}</span>
-        </button>
-      </div>
       <div class="skills-content">
-        <!-- Frontend Skills -->
-        <div class="skills-grid" v-show="activeTab === 'frontend'">
-          <div class="skill-category-title">Frontend Development</div>
-          <div class="skills-list">
+        <div class="skills-grid">
+          <div class="skill-category-title">Tools & Technologies</div>
+          <div class="skills-list" :class="{ collapsed: !showAllSkills }">
             <div
               class="skill-card"
-              v-for="skill in frontendSkills"
+              v-for="skill in allSkills"
               :key="skill.name"
             >
               <div class="skill-icon-wrapper">
@@ -39,40 +26,13 @@
               <h3 class="skill-name">{{ skill.name }}</h3>
             </div>
           </div>
-        </div>
-
-        <!-- Backend Skills -->
-        <div class="skills-grid" v-show="activeTab === 'backend'">
-          <div class="skill-category-title">Backend Development</div>
-          <div class="skills-list">
-            <div
-              class="skill-card"
-              v-for="skill in backendSkills"
-              :key="skill.name"
-            >
-              <div class="skill-icon-wrapper">
-                <font-awesome-icon :icon="skill.icon" class="skill-icon" />
-              </div>
-              <h3 class="skill-name">{{ skill.name }}</h3>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tools Skills -->
-        <div class="skills-grid" v-show="activeTab === 'tools'">
-          <div class="skill-category-title">Tools & Platforms</div>
-          <div class="skills-list">
-            <div
-              class="skill-card"
-              v-for="skill in toolsSkills"
-              :key="skill.name"
-            >
-              <div class="skill-icon-wrapper">
-                <font-awesome-icon :icon="skill.icon" class="skill-icon" />
-              </div>
-              <h3 class="skill-name">{{ skill.name }}</h3>
-            </div>
-          </div>
+          <button
+            v-if="shouldShowMoreButton"
+            @click="toggleShowAllSkills"
+            class="see-more-btn"
+          >
+            {{ showAllSkills ? "Show Less" : "See More" }}
+          </button>
         </div>
       </div>
     </div>
@@ -84,13 +44,9 @@ export default {
   name: "SkillsSection",
   data() {
     return {
-      activeTab: "frontend",
-      tabs: [
-        { id: "frontend", name: "Frontend", icon: ["fab", "html5"] },
-        { id: "backend", name: "Backend", icon: ["fas", "server"] },
-        { id: "tools", name: "Tools", icon: ["fas", "toolbox"] },
-      ],
-      frontendSkills: [
+      showAllSkills: false,
+      allSkills: [
+        // Frontend
         {
           name: "HTML5",
           icon: ["fab", "html5"],
@@ -115,8 +71,7 @@ export default {
           name: "jQuery",
           icon: ["fab", "js"],
         },
-      ],
-      backendSkills: [
+        // Backend
         { name: "PHP", icon: ["fab", "php"] },
         {
           name: "Node.js",
@@ -126,8 +81,7 @@ export default {
           name: "MySQL",
           icon: ["fas", "database"],
         },
-      ],
-      toolsSkills: [
+        // Tools
         {
           name: "Git",
           icon: ["fab", "git-alt"],
@@ -180,6 +134,23 @@ export default {
       ],
     };
   },
+  computed: {
+    visibleRowCount() {
+      // Calculate how many rows of skills are visible
+      const skillsPerRow = window.innerWidth >= 768 ? 4 : 2;
+      return Math.ceil(this.allSkills.length / skillsPerRow);
+    },
+    shouldShowMoreButton() {
+      // Show the button if there are more than 2 rows of skills
+      const skillsPerRow = window.innerWidth >= 768 ? 4 : 2;
+      return Math.ceil(this.allSkills.length / skillsPerRow) > 2;
+    },
+  },
+  methods: {
+    toggleShowAllSkills() {
+      this.showAllSkills = !this.showAllSkills;
+    },
+  },
 };
 </script>
 
@@ -199,143 +170,128 @@ export default {
 
 .section-subtitle {
   display: inline-block;
-  color: var(--primary-color);
-  font-weight: 600;
   font-size: 1rem;
+  color: var(--primary-color);
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: var(--text-primary);
   margin-bottom: 1rem;
-  background: rgba(58, 134, 255, 0.1);
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius);
+  font-weight: 800;
 }
 
 .section-description {
   color: var(--text-secondary);
-  margin-top: 1rem;
   font-size: 1.1rem;
-  line-height: 1.7;
-}
-
-.skills-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 3rem;
-  flex-wrap: wrap;
-}
-
-.tab-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--border-radius);
-  background-color: var(--bg-card);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  color: var(--text-secondary);
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.tab-button:hover {
-  box-shadow: var(--shadow-sm);
-}
-
-.tab-button.active {
-  background: var(--primary-color);
-  color: white;
-  border-color: transparent;
-  box-shadow: var(--shadow-md);
-}
-
-.tab-icon {
-  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .skills-grid {
-  padding: 1rem;
-  background-color: rgba(255, 255, 255, 0.03);
-  border-radius: var(--border-radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: var(--shadow-md);
+  margin-top: 2rem;
+  text-align: center;
 }
 
 .skill-category-title {
   font-size: 1.5rem;
   color: var(--text-primary);
   margin-bottom: 2rem;
-  text-align: center;
   font-weight: 700;
+  text-align: center;
 }
 
 .skills-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 2rem;
+  transition: max-height 0.5s ease;
+}
+
+.skills-list.collapsed {
+  max-height: calc(
+    2 * (80px + 2rem)
+  ); /* Adjust based on skill card height + gap */
+  overflow: hidden;
 }
 
 .skill-card {
-  background-color: var(--bg-card);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  transition: var(--transition);
-  border: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  padding: 1rem;
+  background-color: var(--bg-secondary);
+  border-radius: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border-color);
 }
 
 .skill-card:hover {
-  background-color: var(--bg-card-hover);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   border-color: var(--primary-color);
 }
 
 .skill-icon-wrapper {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
-  transition: var(--transition);
-  box-shadow: 0 5px 15px rgba(58, 134, 255, 0.2);
-}
-
-.skill-card:hover .skill-icon-wrapper {
-  transform: scale(1.1) rotate(5deg);
+  margin-bottom: 0.5rem;
+  background-color: var(--primary-color);
+  background-image: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
+  color: #fff;
 }
 
 .skill-icon {
-  font-size: 1.8rem;
-  color: white;
+  font-size: 1.5rem;
 }
 
 .skill-name {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 0.5rem;
   color: var(--text-primary);
+  font-weight: 600;
+}
+
+.see-more-btn {
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  background-image: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.see-more-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 @media (max-width: 768px) {
-  .skills-tabs {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .tab-button {
-    width: 100%;
-    max-width: 300px;
-    justify-content: center;
-  }
-
   .skills-list {
-    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section-title {
+    font-size: 2rem;
   }
 }
 </style>
