@@ -2,16 +2,6 @@
 node_modules
 /dist
 
-# Files that shouldn't be pushed to the repository
-public/resume-gomba.pdf
-public/Screenshot 2025-05-30 000239.png
-public/Screenshot 2025-05-30 000254.png
-public/Screenshot 2025-05-30 000303.png
-public/Screenshot 2025-05-30 000312.png
-public/Screenshot 2025-05-30 000320.png
-public/Screenshot 2025-05-30 000331.png
-public/Screenshot 2025-05-30 000339.png
-
 # local env files
 .env.local
 .env.*.local
