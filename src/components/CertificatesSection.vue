@@ -10,19 +10,24 @@
         </p>
       </div>
 
-      <div class="certificates-grid">
+      <div class="certificates-grid" :class="{ 'collapsed': !showAllCertificates }">
         <div
           class="certificate-card"
           v-for="certificate in certificates"
           :key="certificate.id"
           @click="showModal(certificate)"
         >
-          <div class="certificate-image">            <img
-              :src="certificate.image"
-              alt="Certificate"
-            />
-          </div>          <!-- Certificate content removed as requested -->
+          <div class="certificate-image">
+            <img :src="certificate.image" alt="Certificate" />
+          </div>
+          <!-- Certificate content removed as requested -->
         </div>
+      </div>
+      
+      <div class="view-more-container" v-if="shouldShowViewMoreButton">
+        <button @click="toggleShowAllCertificates" class="view-more-btn">
+          {{ showAllCertificates ? 'Show Less' : 'View More' }}
+        </button>
       </div>
     </div>
 
@@ -36,11 +41,10 @@
         <button class="close-modal-btn" @click="closeModal">
           <font-awesome-icon :icon="['fas', 'times']" />
         </button>
-        <div class="modal-image-container">          <img
-            :src="selectedCertificate.image"
-            alt="Certificate"
-          />
-        </div>        <!-- Modal info section removed as requested -->
+        <div class="modal-image-container">
+          <img :src="selectedCertificate.image" alt="Certificate" />
+        </div>
+        <!-- Modal info section removed as requested -->
       </div>
     </div>
   </section>
@@ -51,7 +55,9 @@ export default {
   name: "CertificatesSection",
   data() {
     return {
-      selectedCertificate: null,      certificates: [
+      selectedCertificate: null,
+      showAllCertificates: false,
+      certificates: [
         {
           id: 1,
           image: "/Screenshot 2025-05-30 000239.png",
@@ -82,6 +88,23 @@ export default {
         },
       ],
     };
+  },  computed: {
+    shouldShowViewMoreButton() {
+      // Calculate number of certificates per row based on screen width
+      // This is an approximation and should match your CSS grid setup
+      const certificatesPerRow = window.innerWidth >= 1200 ? 4 : 
+                                 window.innerWidth >= 768 ? 3 : 2;
+      
+      // Show button if there are more than one row of certificates
+      return this.certificates.length > certificatesPerRow;
+    }
+  },mounted() {
+    // Add resize event listener to recalculate the button visibility
+    window.addEventListener('resize', this.checkViewMoreButtonVisibility);
+  },
+  beforeUnmount() {
+    // Remove event listener when component is destroyed
+    window.removeEventListener('resize', this.checkViewMoreButtonVisibility);
   },
   methods: {
     showModal(certificate) {
@@ -92,6 +115,13 @@ export default {
       this.selectedCertificate = null;
       document.body.style.overflow = ""; // Re-enable scrolling
     },
+    toggleShowAllCertificates() {
+      this.showAllCertificates = !this.showAllCertificates;
+    },
+    checkViewMoreButtonVisibility() {
+      // This method is called on window resize to recalculate if the "View More" button should be shown
+      this.shouldShowViewMoreButton = this.certificates.length > (window.innerWidth >= 1200 ? 4 : window.innerWidth >= 768 ? 3 : 2);
+    }
   },
 };
 </script>
@@ -136,6 +166,12 @@ export default {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 3rem;
+  transition: max-height 0.5s ease;
+}
+
+.certificates-grid.collapsed {
+  max-height: calc(1 * (300px + 2rem)); /* Adjust based on your card height + gap */
+  overflow: hidden;
 }
 
 .certificate-card {
@@ -178,27 +214,29 @@ export default {
   transform: scale(1.03);
 }
 
-.certificate-content {
+/* View More Button Styles */
+.view-more-container {
   width: 100%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
-.certificate-title {
-  font-size: 1.3rem;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-  font-weight: 700;
+.view-more-btn {
+  padding: 0.75rem 2rem;
+  background-image: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.certificate-issuer {
-  color: var(--primary-color);
-  font-size: 1rem;
-  margin-bottom: 0.3rem;
-}
-
-.certificate-date {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
+.view-more-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Modal styles */
@@ -268,35 +306,19 @@ export default {
   object-fit: contain;
 }
 
-.modal-info {
-  padding: 1.5rem;
-  text-align: left;
-}
-
-.modal-title {
-  font-size: 1.8rem;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
-  font-weight: 700;
-}
-
-.modal-description {
-  color: var(--text-secondary);
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-.modal-issuer,
-.modal-date {
-  color: var(--text-secondary);
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
+@media (max-width: 1200px) {
+  .certificates-grid.collapsed {
+    max-height: calc(1 * (350px + 2rem)); /* Adjust for 3 per row */
+  }
 }
 
 @media (max-width: 768px) {
   .certificates-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .certificates-grid.collapsed {
+    max-height: calc(1 * (350px + 2rem)); /* Adjust for 2 per row */
   }
 
   .section-title {
@@ -305,14 +327,6 @@ export default {
 
   .modal-content {
     width: 95%;
-  }
-
-  .modal-title {
-    font-size: 1.5rem;
-  }
-
-  .modal-description {
-    font-size: 1rem;
   }
 }
 </style>
