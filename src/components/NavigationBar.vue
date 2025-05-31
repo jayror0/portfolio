@@ -5,7 +5,7 @@
   >
     <div class="container navbar-container">
       <a href="#" class="navbar-brand" @click.prevent="scrollToTop">
-        <img src="/icons/logomain.png" alt="JG Logo" class="logo-image" />
+        <img src="/icons/logo.png" alt="JG Logo" class="logo-image" />
       </a>
 
       <button
