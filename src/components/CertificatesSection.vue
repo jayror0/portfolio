@@ -20,7 +20,6 @@
           <div class="certificate-image">
             <img :src="certificate.image" alt="Certificate" />
           </div>
-          <!-- Certificate content removed as requested -->
         </div>
       </div>
       
@@ -222,7 +221,6 @@ export default {
   transform: scale(1.03);
 }
 
-/* View More Button Styles */
 .view-more-container {
   width: 100%;
   display: flex;
@@ -249,7 +247,7 @@ export default {
 
 @media (max-width: 1200px) {
   .certificates-grid.collapsed {
-    max-height: calc(1 * (350px + 2rem)); /* Adjust for 3 per row */
+    max-height: calc(1 * (350px + 2rem)); 
   }
 }
 
@@ -259,7 +257,7 @@ export default {
   }
 
   .certificates-grid.collapsed {
-    max-height: calc(1 * (350px + 2rem)); /* Adjust for 2 per row */
+    max-height: calc(1 * (350px + 2rem)); 
   }
 
   .section-title {

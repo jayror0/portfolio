@@ -2,14 +2,16 @@
   <section id="education" class="education-section py-20">
     <div class="container">
       <h2 class="section-title">Education.</h2>
-
       <div class="education-card">
         <div class="education-content">
+          <div class="school-logo">
+            <img src="/icons/SPIST.png" alt="SPIST Logo" />
+          </div>
           <h3 class="degree">Bachelor of Science in Information Technology</h3>
           <h4 class="school">
             Southern Philippines Institute of Science & Technology
           </h4>
-          <p class="duration">2021 - Present</p>
+          <p class="duration">2022 - Present</p>
 
           <div class="education-details">
             <div class="achievements">
@@ -22,7 +24,7 @@
             <div class="relevant-courses">
               <h5 class="details-title">Relevant Coursework</h5>
               <div class="courses-grid">
-                <span class="course">Web Development</span>
+                <span class="course">stroWeb Development</span>     
                 <span class="course">Database Management</span>
                 <span class="course">Graphic Designer</span>
               </div>
@@ -56,6 +58,7 @@ export default {
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 }
 
 .education-card:hover {
@@ -68,8 +71,10 @@ export default {
   height: 120px;
   border-radius: 50%;
   overflow: hidden;
-  margin-bottom: 2rem;
   border: 2px solid var(--accent-color);
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
 }
 
 .school-logo img {

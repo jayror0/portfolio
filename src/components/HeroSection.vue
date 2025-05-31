@@ -9,13 +9,13 @@
         </div>
 
         <h1 class="hero-title">
-          <span class="text-gradient">Jayson Gomba</span>
+          <span class="text-gradient">Jayson Gomba</span>     
           <span class="wave">👋</span>
         </h1>
 
         <h2 class="hero-subtitle">
           <span id="type-text">Web Developer & BSIT Student</span>
-          <span class="cursor">|</span>
+          <span class="cursor"> </span>   
         </h2>
 
         <p class="hero-description">
@@ -78,7 +78,6 @@
 export default {
   name: "HeroSection",
   mounted() {
-    // Initialize typing effect
     this.initTypingEffect();
   },
   methods: {
@@ -292,7 +291,7 @@ export default {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
-  color: var(--primary-color); /* Improved contrast */
+  color: var(--primary-color); 
 }
 
 .stat-label {

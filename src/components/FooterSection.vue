@@ -1,11 +1,10 @@
 <template>
   <footer class="footer-section">
-
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="#" class="footer-brand-link">
-            <img src="/icons/logomain.png" alt="JG logo" class="footer-logo" />
+            <img src="/icons/logo.png" alt="JG logo" class="footer-logo" />
           </a>
 
           <p class="footer-tagline">

@@ -43,9 +43,9 @@ export default {
 
 <style>
 :root {
-  --primary-color: #3a86ff;
-  --secondary-color: #7329db;
-  --accent-color: #7329db;
+  --primary-color: #24d0d5;
+  --secondary-color: #157d81;
+  --accent-color: #064d50;
   --accent-light: #ffbe0b;
   --accent-dark: #fb5607;
   --text-primary: #ffffff;
