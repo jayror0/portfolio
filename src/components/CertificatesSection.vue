@@ -13,9 +13,9 @@
       <div class="certificates-grid" :class="{ 'collapsed': !showAllCertificates }">
         <div
           class="certificate-card"
-          v-for="certificate in certificates"
+          v-for="(certificate, index) in certificates"
           :key="certificate.id"
-          @click="showModal(certificate)"
+          @click="openPhotoSwipe(index)"
         >
           <div class="certificate-image">
             <img :src="certificate.image" alt="Certificate" />
@@ -30,33 +30,19 @@
         </button>
       </div>
     </div>
-
-    <!-- Modal for maximized image -->
-    <div
-      class="certificate-modal"
-      v-if="selectedCertificate"
-      @click.self="closeModal"
-    >
-      <div class="modal-content">
-        <button class="close-modal-btn" @click="closeModal">
-          <font-awesome-icon :icon="['fas', 'times']" />
-        </button>
-        <div class="modal-image-container">
-          <img :src="selectedCertificate.image" alt="Certificate" />
-        </div>
-        <!-- Modal info section removed as requested -->
-      </div>
-    </div>
   </section>
 </template>
 
 <script>
+import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import 'photoswipe/style.css';
+
 export default {
   name: "CertificatesSection",
   data() {
     return {
-      selectedCertificate: null,
       showAllCertificates: false,
+      lightbox: null,
       certificates: [
         {
           id: 1,
@@ -88,7 +74,7 @@ export default {
         },
       ],
     };
-  },  computed: {
+  },computed: {
     shouldShowViewMoreButton() {
       // Calculate number of certificates per row based on screen width
       // This is an approximation and should match your CSS grid setup
@@ -98,22 +84,44 @@ export default {
       // Show button if there are more than one row of certificates
       return this.certificates.length > certificatesPerRow;
     }
-  },mounted() {
+  },  mounted() {
     // Add resize event listener to recalculate the button visibility
     window.addEventListener('resize', this.checkViewMoreButtonVisibility);
+    // Initialize PhotoSwipe
+    this.initPhotoSwipe();
   },
   beforeUnmount() {
     // Remove event listener when component is destroyed
     window.removeEventListener('resize', this.checkViewMoreButtonVisibility);
+    // Destroy PhotoSwipe instance
+    if (this.lightbox) {
+      this.lightbox.destroy();
+    }
   },
   methods: {
-    showModal(certificate) {
-      this.selectedCertificate = certificate;
-      document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
+    initPhotoSwipe() {
+      // Create PhotoSwipe lightbox
+      this.lightbox = new PhotoSwipeLightbox({
+        dataSource: this.certificates.map(cert => ({
+          src: cert.image,
+          width: 1920,
+          height: 1080,
+          alt: 'Certificate'
+        })),
+        pswpModule: () => import('photoswipe'),
+        bgOpacity: 0.9,
+        showHideAnimationType: 'zoom',
+        spacing: 0.1,
+        allowPanToNext: false,
+        closeOnVerticalDrag: true,
+        imageClickAction: 'close',
+        tapAction: 'close'
+      });
+      
+      this.lightbox.init();
     },
-    closeModal() {
-      this.selectedCertificate = null;
-      document.body.style.overflow = ""; // Re-enable scrolling
+    openPhotoSwipe(index) {
+      this.lightbox.loadAndOpen(index);
     },
     toggleShowAllCertificates() {
       this.showAllCertificates = !this.showAllCertificates;
@@ -239,73 +247,6 @@ export default {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Modal styles */
-.certificate-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-}
-
-.modal-content {
-  position: relative;
-  max-width: 90%;
-  max-height: 90%;
-  background-color: var(--bg-secondary);
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-}
-
-.close-modal-btn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  cursor: pointer;
-  z-index: 10;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-}
-
-.close-modal-btn:hover {
-  background-color: var(--secondary-color);
-  transform: scale(1.1);
-}
-
-.modal-image-container {
-  width: 100%;
-  max-height: 70vh;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  background-color: white;
-}
-
-.modal-image-container img {
-  width: 100%;
-  max-height: 70vh;
-  object-fit: contain;
-}
-
 @media (max-width: 1200px) {
   .certificates-grid.collapsed {
     max-height: calc(1 * (350px + 2rem)); /* Adjust for 3 per row */
@@ -323,10 +264,6 @@ export default {
 
   .section-title {
     font-size: 2rem;
-  }
-
-  .modal-content {
-    width: 95%;
   }
 }
 </style>
