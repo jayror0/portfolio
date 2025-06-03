@@ -40,7 +40,6 @@ export default {
     return {
       showAllSkills: false,
       allSkills: [
-        // Frontend
         {
           name: "HTML5",
           icon: ["fab", "html5"],
@@ -65,7 +64,6 @@ export default {
           name: "jQuery",
           icon: ["fab", "js"],
         },
-        // Backend
         { name: "PHP", icon: ["fab", "php"] },
         {
           name: "Node.js",
@@ -75,7 +73,6 @@ export default {
           name: "MySQL",
           icon: ["fas", "database"],
         },
-        // Tools
         {
           name: "Git",
           icon: ["fab", "git-alt"],
@@ -130,12 +127,10 @@ export default {
   },
   computed: {
     visibleRowCount() {
-      // Calculate how many rows of skills are visible
       const skillsPerRow = window.innerWidth >= 768 ? 4 : 2;
       return Math.ceil(this.allSkills.length / skillsPerRow);
     },
     shouldShowMoreButton() {
-      // Show the button if there are more than 2 rows of skills
       const skillsPerRow = window.innerWidth >= 768 ? 4 : 2;
       return Math.ceil(this.allSkills.length / skillsPerRow) > 2;
     },
@@ -211,7 +206,7 @@ export default {
 .skills-list.collapsed {
   max-height: calc(
     2 * (80px + 2rem)
-  ); /* Adjust based on skill card height + gap */
+  );
   overflow: hidden;
 }
 
