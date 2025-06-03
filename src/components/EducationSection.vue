@@ -24,9 +24,9 @@
             <div class="relevant-courses">
               <h5 class="details-title">Relevant Coursework</h5>
               <div class="courses-grid">
-                <span class="course">stroWeb Development</span>     
+                <span class="course">Web Development</span>     
                 <span class="course">Database Management</span>
-                <span class="course">Graphic Designer</span>
+                <span class="course">Graphic Design</span>
               </div>
             </div>
           </div>
