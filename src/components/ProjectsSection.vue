@@ -4,11 +4,6 @@
       <div class="section-header">
         <span class="section-subtitle">My Recent Work</span>
         <h2 class="section-title">Featured Projects</h2>
-        <p class="section-description">
-          Here are some of my recent projects that showcase my skills and
-          experience. Each project reflects my passion for creating intuitive
-          and impactful web applications.
-        </p>
       </div>
 
       <div class="projects-grid">

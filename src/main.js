@@ -53,7 +53,7 @@ import {
   faStrava,
 } from "@fortawesome/free-brands-svg-icons";
 
-/* add icons to the library */
+
 library.add(
   faUserCircle,
   faQuoteLeft,
@@ -99,5 +99,3 @@ library.add(
 const app = createApp(App);
 app.component("font-awesome-icon", FontAwesomeIcon);
 app.mount("#app");
-
-// AOS initialization removed

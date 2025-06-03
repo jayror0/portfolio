@@ -4,16 +4,10 @@
       <div class="section-header">
         <span class="section-subtitle">What I Work With</span>
         <h2 class="section-title">My Technical Skills</h2>
-        <p class="section-description">
-          I'm proficient in a wide range of technologies and constantly
-          expanding my skillset to create efficient, modern, and user-friendly
-          web applications.
-        </p>
       </div>
 
       <div class="skills-content">
         <div class="skills-grid">
-          <div class="skill-category-title">Tools & Technologies</div>
           <div class="skills-list" :class="{ collapsed: !showAllSkills }">
             <div
               class="skill-card"
@@ -170,12 +164,15 @@ export default {
 
 .section-subtitle {
   display: inline-block;
-  font-size: 1rem;
   color: var(--primary-color);
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  background: rgba(58, 134, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
 }
 
 .section-title {

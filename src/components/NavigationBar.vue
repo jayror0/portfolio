@@ -75,10 +75,9 @@ export default {
       const scrollPosition = window.scrollY;
       this.isScrolled = scrollPosition > 20;
 
-      // Improved section detection
       const currentSection = this.sections
         .map((section) => {
-          const sectionTop = section.offsetTop - 150; // Adjusted offset
+          const sectionTop = section.offsetTop - 150; 
           const sectionHeight = section.offsetHeight;
           const sectionId = section.getAttribute("id");
 

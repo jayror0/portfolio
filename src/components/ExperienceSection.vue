@@ -4,16 +4,16 @@
       <h2 class="section-title">Experience.</h2>
 
       <div class="timeline">
-        ...
+        notice: This section is currently under construction.
         <!-- <div class="timeline-item">
           <div class="timeline-content">
             <div class="company-logo">
               <img src="/company-logos/company1.png" alt="Company 1" />
             </div>
             <div class="experience-details">
-              <h3 class="position">Web Developer Intern</h3>
-              <h4 class="company">Tech Company Name</h4>
-              <p class="duration">June 2023 - Present</p>
+              <h3 class="position">My Position</h3>
+              <h4 class="company">The Company Name</h4>
+              <p class="duration">Date</p>
               <ul class="responsibilities">
                 <li>Developed and maintained responsive web applications using Vue.js and Bootstrap</li>
                 <li>Collaborated with senior developers on various client projects</li>
@@ -34,9 +34,9 @@
               <img src="/company-logos/company2.png" alt="Company 2" />
             </div>
             <div class="experience-details">
-              <h3 class="position">Frontend Developer (Part-time)</h3>
-              <h4 class="company">Startup Name</h4>
-              <p class="duration">January 2023 - May 2023</p>
+              <h3 class="position">My Position</h3>
+              <h4 class="company">The Company Name</h4>
+              <p class="duration">Date</p>
               <ul class="responsibilities">
                 <li>Built responsive landing pages and web components</li>
                 <li>Optimized website performance and loading times</li>
