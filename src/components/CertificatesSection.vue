@@ -3,11 +3,7 @@
     <div class="container">
       <div class="section-header">
         <span class="section-subtitle">Recognition</span>
-        <h2 class="section-title">My Certificates</h2>
-        <p class="section-description">
-          Credentials that showcase my dedication to continuous learning and
-          professional growth.
-        </p>
+        <h2 class="section-title">Certificates</h2>
       </div>
 
       <div class="certificates-grid" :class="{ 'collapsed': !showAllCertificates }">
@@ -45,61 +41,34 @@ export default {
       certificates: [
         {
           id: 1,
-          image: "/Screenshot 2025-05-30 000239.png",
+          image: "/Screenshot 2025-05-30 000339.png",
         },
         {
           id: 2,
-          image: "/Screenshot 2025-05-30 000254.png",
-        },
-        {
-          id: 3,
-          image: "/Screenshot 2025-05-30 000303.png",
-        },
-        {
-          id: 4,
-          image: "/Screenshot 2025-05-30 000312.png",
-        },
-        {
-          id: 5,
-          image: "/Screenshot 2025-05-30 000320.png",
-        },
-        {
-          id: 6,
-          image: "/Screenshot 2025-05-30 000331.png",
-        },
-        {
-          id: 7,
-          image: "/Screenshot 2025-05-30 000339.png",
+          image: "/Screenshot 2025-06-03 202536.png",
         },
       ],
     };
   },computed: {
     shouldShowViewMoreButton() {
-      // Calculate number of certificates per row based on screen width
-      // This is an approximation and should match your CSS grid setup
       const certificatesPerRow = window.innerWidth >= 1200 ? 4 : 
                                  window.innerWidth >= 768 ? 3 : 2;
-      
-      // Show button if there are more than one row of certificates
+    
       return this.certificates.length > certificatesPerRow;
     }
   },  mounted() {
-    // Add resize event listener to recalculate the button visibility
+
     window.addEventListener('resize', this.checkViewMoreButtonVisibility);
-    // Initialize PhotoSwipe
     this.initPhotoSwipe();
   },
   beforeUnmount() {
-    // Remove event listener when component is destroyed
     window.removeEventListener('resize', this.checkViewMoreButtonVisibility);
-    // Destroy PhotoSwipe instance
     if (this.lightbox) {
       this.lightbox.destroy();
     }
   },
   methods: {
     initPhotoSwipe() {
-      // Create PhotoSwipe lightbox
       this.lightbox = new PhotoSwipeLightbox({
         dataSource: this.certificates.map(cert => ({
           src: cert.image,
@@ -126,7 +95,6 @@ export default {
       this.showAllCertificates = !this.showAllCertificates;
     },
     checkViewMoreButtonVisibility() {
-      // This method is called on window resize to recalculate if the "View More" button should be shown
       this.shouldShowViewMoreButton = this.certificates.length > (window.innerWidth >= 1200 ? 4 : window.innerWidth >= 768 ? 3 : 2);
     }
   },
@@ -147,12 +115,15 @@ export default {
 
 .section-subtitle {
   display: inline-block;
-  font-size: 1rem;
   color: var(--primary-color);
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  background: rgba(58, 134, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
 }
 
 .section-title {
@@ -177,7 +148,7 @@ export default {
 }
 
 .certificates-grid.collapsed {
-  max-height: calc(1 * (300px + 2rem)); /* Adjust based on your card height + gap */
+  max-height: calc(1 * (300px + 2rem)); 
   overflow: hidden;
 }
 
