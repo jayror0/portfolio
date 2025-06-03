@@ -41,7 +41,7 @@ export default {
       certificates: [
         {
           id: 1,
-          image: "/Screenshot 2025-05-30 000339.png",
+          image: "/Screenshot 2025-06-03 202416.png",
         },
         {
           id: 2,
