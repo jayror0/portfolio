@@ -24,6 +24,8 @@ import EducationSection from "./components/EducationSection.vue";
 import CertificatesSection from "./components/CertificatesSection.vue";
 import ContactSection from "./components/ContactSection.vue";
 import FooterSection from "./components/FooterSection.vue";
+import "./components/light-mode-overrides.css";
+import "./components/theme-transition.css";
 
 export default {
   name: "App",
@@ -65,6 +67,36 @@ export default {
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   --transition: all 0.3s ease;
+
+  --navbar-bg: rgba(18, 18, 18, 0.8);
+  --navbar-scrolled-bg: rgba(18, 18, 18, 0.95);
+  --theme-transition: background-color 0.4s ease, color 0.4s ease,
+    border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+[data-theme="light"] {
+  --primary-color: #1a9599;
+  --secondary-color: #0c7478;
+  --accent-color: #045255;
+  --accent-light: #f79e00;
+  --accent-dark: #dd4c05;
+  --text-primary: #333333;
+  --text-secondary: #555555;
+  --bg-primary: #ffffff;
+  --bg-secondary: #fafafa;
+  --bg-tertiary: #f2f2f2;
+  --bg-quaternary: #e9e9e9;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8f8f8;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.18);
+
+  /* Card border in light mode */
+  --card-border: 1px solid rgba(0, 0, 0, 0.08);
+
+  --navbar-bg: rgba(255, 255, 255, 0.95);
+  --navbar-scrolled-bg: rgba(255, 255, 255, 0.98);
 }
 
 * {
@@ -84,6 +116,7 @@ body {
   color: var(--text-primary);
   background-color: var(--bg-primary);
   font-size: 16px;
+  transition: var(--theme-transition);
 }
 
 #app {
@@ -101,6 +134,7 @@ section {
   padding: 100px 0;
   overflow: hidden;
   position: relative;
+  transition: var(--theme-transition);
 }
 
 section:nth-child(even) {
@@ -168,6 +202,10 @@ section:nth-child(even) {
   color: var(--text-primary);
 }
 
+[data-theme="light"] .btn-primary {
+  color: #ffffff;
+}
+
 .btn-outline-primary {
   background-color: transparent;
   border: 2px solid var(--primary-color);
@@ -179,14 +217,23 @@ section:nth-child(even) {
   color: var(--text-primary);
 }
 
+[data-theme="light"] .btn-outline-primary:hover {
+  color: #ffffff;
+}
+
 .card {
   background-color: var(--bg-card);
   border-radius: var(--border-radius);
   padding: 1.5rem;
   box-shadow: var(--shadow-sm);
-  transition: var(--transition);
+  transition: var(--theme-transition);
   overflow: hidden;
   height: 100%;
+  border: none;
+}
+
+[data-theme="light"] .card {
+  border: var(--card-border);
 }
 
 .card:hover {
@@ -247,7 +294,15 @@ section:nth-child(even) {
 .education-card,
 .certificate-card {
   background-color: var(--bg-card);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, var(--theme-transition);
+  border: none;
+}
+
+[data-theme="light"] .project-card,
+[data-theme="light"] .experience-card,
+[data-theme="light"] .education-card,
+[data-theme="light"] .certificate-card {
+  border: var(--card-border);
 }
 
 .project-card:hover,
@@ -255,6 +310,7 @@ section:nth-child(even) {
 .education-card:hover,
 .certificate-card:hover {
   transform: translateY(-4px);
+  background-color: var(--bg-card-hover);
 }
 
 @media (max-width: 992px) {
@@ -296,5 +352,14 @@ section:nth-child(even) {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--secondary-color);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 </style>

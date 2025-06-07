@@ -145,8 +145,13 @@ export default {
   background-color: var(--bg-card);
   border-radius: var(--border-radius);
   padding: 1.5rem;
-  transition: var(--transition);
+  transition: var(--theme-transition);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="light"] .info-card {
+  border: var(--card-border);
 }
 
 .info-card:hover {
@@ -224,8 +229,13 @@ export default {
   justify-content: center;
   color: var(--text-secondary);
   font-size: 1.2rem;
-  transition: var(--transition);
+  transition: var(--theme-transition);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] .social-link {
+  border: var(--card-border);
+  box-shadow: var(--shadow-sm);
 }
 
 .social-link:hover {
@@ -243,8 +253,4 @@ export default {
   border-color: #0077b5;
 }
 
-.social-link:nth-child(3):hover {
-  background-color: #1877f2;
-  border-color: #1877f2;
-}
 </style>

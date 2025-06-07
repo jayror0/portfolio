@@ -9,13 +9,13 @@
         </div>
 
         <h1 class="hero-title">
-          <span class="text-gradient">Jayson Gomba</span>     
+          <span class="text-gradient">Jayson Gomba</span>
           <span class="wave">👋</span>
         </h1>
 
         <h2 class="hero-subtitle">
           <span id="type-text">Web Developer & BSIT Student</span>
-          <span class="cursor"> </span>   
+          <span class="cursor"> </span>
         </h2>
 
         <p class="hero-description">
@@ -51,13 +51,6 @@
         </div>
 
         <div class="cta-buttons">
-          <a
-            href="/resume-gomba.pdf"
-            class="btn btn-primary download-btn"
-            download
-          >
-            <font-awesome-icon icon="download" /> Download Resume
-          </a>
           <a href="#contact" class="btn btn-outline-primary contact-btn">
             <font-awesome-icon icon="envelope" /> Contact Me
           </a>
@@ -149,6 +142,11 @@ export default {
   height: 100%;
   overflow: hidden;
   z-index: 0;
+}
+
+[data-theme="light"] .hero-background {
+  background-color: var(--bg-primary);
+  opacity: 1;
 }
 
 .hero-content {
@@ -291,7 +289,7 @@ export default {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
-  color: var(--primary-color); 
+  color: var(--primary-color);
 }
 
 .stat-label {

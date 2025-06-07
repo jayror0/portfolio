@@ -25,16 +25,35 @@
     <meta property="og:image" content="<%= BASE_URL %>icons/logo.png" />
     <meta property="og:url" content="https://jayson-gomba.com" />
     <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#1a1a1a" id="theme-color" />
+    <script>
+      const savedTheme = localStorage.getItem("theme");
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Jayson Gomba | Web Developer" />
-    <meta
-      name="twitter:description"
-      content="A passionate BSIT student and web developer, creating innovative web solutions."
-    />
-    <meta name="twitter:image" content="<%= BASE_URL %>icons/logo.png" />
+      if (savedTheme === "light") {
+        document.documentElement.setAttribute("data-theme", "light");
 
-    <meta name="theme-color" content="#1a1a1a" />
+        const metaThemeColor = document.querySelector(
+          'meta[name="theme-color"]'
+        );
+        if (metaThemeColor) {
+          metaThemeColor.setAttribute("content", "#f5f5f5");
+        }
+      } else if (!savedTheme) {
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (!prefersDark) {
+          document.documentElement.setAttribute("data-theme", "light");
+
+          const metaThemeColor = document.querySelector(
+            'meta[name="theme-color"]'
+          );
+          if (metaThemeColor) {
+            metaThemeColor.setAttribute("content", "#f5f5f5");
+          }
+        }
+      }
+    </script>
   </head>
   <body>
     <noscript>

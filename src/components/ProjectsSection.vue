@@ -2,7 +2,7 @@
   <section id="projects" class="projects-section py-20">
     <div class="container">
       <div class="section-header">
-        <span class="section-subtitle">My Recent Work</span>
+        <span class="section-subtitle">My project&personal Work</span>
         <h2 class="section-title">Featured Projects</h2>
       </div>
 
@@ -77,12 +77,12 @@ export default {
           title: "Placehub Rental System",
           description:
             "A comprehensive apartment rental platform with user authentication, apartment management, and rental agreement features. Built with a focus on user experience and modern design.",
-          image: "/project-images/placehub.png",
+          image: "/project-images/placehub_photo.png",
           technologies: [
             "PHP",
             "JavaScript",
             "MySQL",
-            "Bootstrap 5.3",
+            "Bootstrap",
             "jQuery",
             "AJAX",
           ],
@@ -90,20 +90,26 @@ export default {
           isHovered: false,
         },
         {
-          title: "Portfolio Website",
+          title: "LeafWise - Plant identification",
           description:
-            "A modern portfolio website built with Vue.js featuring smooth animations, responsive design, and dark mode. Created to showcase my projects and skills.",
-          image: "/project-images/port1.png",
-          technologies: ["Vue.js", "Bootstrap 5.3", "AOS", "JavaScript"],
+            "A plant identification web application that allows users to upload and capture images of plants for identification. It uses google gemini for image recognition and provides detailed information about the identified plants.",
+          image: "/project-images/leafwise_photo.png",
+          technologies: [
+            "Next.js",
+            "TypeScript",
+            "Google Gemini",
+            "React Context",
+            "Browser LocalStorage",
+          ],
           demo: "https://portfolio-brown-tau-59.vercel.app",
           isHovered: false,
         },
         {
-          title: "Organization Website",
+          title: "ACCESS - Organization Website",
           description:
-            "A responsive website for an organization, showcasing its mission, vision, and services. Built with a focus on user engagement and modern design principles.",
-          image: "/project-images/Screenshot 2025-05-18 193541.png",
-          technologies: ["PHP", "Bootstrap 5.3", "HTML", "CSS", "JavaScript"],
+            "A modern and responsive website for the ACCESS organization, showcasing their mission, projects, and events. The site features a clean design with smooth animations and a user-friendly interface.",
+          image: "/project-images/accessdep_photo.png",
+          technologies: ["PHP", "Bootstrap", "HTML", "CSS", "JavaScript"],
           demo: "https://access-department-theta.vercel.app",
           isHovered: false,
         },

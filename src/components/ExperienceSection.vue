@@ -4,7 +4,6 @@
       <h2 class="section-title">Experience.</h2>
 
       <div class="timeline">
-        notice: This section is currently under construction.
         <!-- <div class="timeline-item">
           <div class="timeline-content">
             <div class="company-logo">

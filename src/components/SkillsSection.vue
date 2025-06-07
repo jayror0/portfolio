@@ -15,18 +15,22 @@
               :key="skill.name"
             >
               <div class="skill-icon-wrapper">
-                <font-awesome-icon :icon="skill.icon" class="skill-icon" />
+                <img :src="skill.icon" :alt="skill.name" class="skill-icon" />
               </div>
               <h3 class="skill-name">{{ skill.name }}</h3>
             </div>
           </div>
-          <button
+          <div
             v-if="shouldShowMoreButton"
             @click="toggleShowAllSkills"
             class="see-more-btn"
           >
-            {{ showAllSkills ? "Show Less" : "See More" }}
-          </button>
+            <span>{{ showAllSkills ? "Show Less" : "See More" }}</span>
+            <font-awesome-icon
+              :icon="showAllSkills ? 'chevron-up' : 'chevron-down'"
+              class="bounce"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -42,85 +46,91 @@ export default {
       allSkills: [
         {
           name: "HTML5",
-          icon: ["fab", "html5"],
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
         },
         {
           name: "CSS3",
-          icon: ["fab", "css3-alt"],
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
         },
         {
           name: "JavaScript",
-          icon: ["fab", "js"],
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
         },
         {
           name: "Vue.js",
-          icon: ["fab", "vuejs"],
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
         },
         {
           name: "Bootstrap",
-          icon: ["fab", "bootstrap"],
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
         },
         {
           name: "jQuery",
-          icon: ["fab", "js"],
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg",
         },
-        { name: "PHP", icon: ["fab", "php"] },
+        {
+          name: "PHP",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
+        },
         {
           name: "Node.js",
-          icon: ["fab", "node-js"],
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
         },
         {
           name: "MySQL",
-          icon: ["fas", "database"],
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
         },
         {
           name: "Git",
-          icon: ["fab", "git-alt"],
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
         },
         {
           name: "GitHub",
-          icon: ["fab", "github"],
+          icon: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/github.png",
         },
         {
           name: "VS Code",
-          icon: ["fas", "code"],
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
         },
-        { name: "npm", icon: ["fab", "npm"] },
+        {
+          name: "npm",
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg",
+        },
         {
           name: "Figma",
-          icon: ["fab", "figma"],
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
         },
         {
           name: "Canva",
-          icon: ["fas", "palette"],
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg",
         },
         {
           name: "Vercel",
-          icon: ["fas", "rocket"],
+          icon: "https://www.vectorlogo.zone/logos/vercel/vercel-icon.svg",
         },
         {
           name: "Netlify",
-          icon: ["fas", "cloud-upload-alt"],
+          icon: "https://www.vectorlogo.zone/logos/netlify/netlify-icon.svg",
         },
         {
           name: "Taiga.io",
-          icon: ["fas", "tasks"],
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg",
         },
         {
           name: "cPanel",
-          icon: ["fas", "server"],
+          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg",
         },
         {
           name: "OpenAI",
-          icon: ["fas", "robot"],
+          icon: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/openai.png",
         },
         {
           name: "Gemini",
-          icon: ["fas", "lightbulb"],
+          icon: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/gemini-color.png",
         },
         {
           name: "GitHub Copilot",
-          icon: ["fas", "code"],
+          icon: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/githubcopilot.png",
         },
       ],
     };
@@ -199,14 +209,12 @@ export default {
 .skills-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 2rem;
+  gap: 1.5rem;
   transition: max-height 0.5s ease;
 }
 
 .skills-list.collapsed {
-  max-height: calc(
-    2 * (80px + 2rem)
-  );
+  max-height: calc(2 * (80px + 2rem));
   overflow: hidden;
 }
 
@@ -214,7 +222,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding: 0.75rem;
   background-color: var(--bg-secondary);
   border-radius: 1rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -235,17 +243,21 @@ export default {
   align-items: center;
   justify-content: center;
   margin-bottom: 0.5rem;
-  background-color: var(--primary-color);
-  background-image: linear-gradient(
-    135deg,
-    var(--primary-color) 0%,
-    var(--secondary-color) 100%
-  );
-  color: #fff;
+  background-color: transparent;
+  padding: 5px;
 }
 
 .skill-icon {
-  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  filter: brightness(0.9);
+}
+
+.skill-card:hover .skill-icon {
+  filter: brightness(1);
+  transform: scale(1.1);
+  transition: all 0.3s ease;
 }
 
 .skill-name {
@@ -257,24 +269,43 @@ export default {
 
 .see-more-btn {
   margin-top: 2rem;
-  padding: 0.75rem 1.5rem;
-  background-image: linear-gradient(
-    135deg,
-    var(--primary-color) 0%,
-    var(--secondary-color) 100%
-  );
-  color: white;
-  border: none;
-  border-radius: 2rem;
-  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  opacity: 0.7;
+  transition: var(--transition);
+  justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: none;
+  background: none;
 }
 
 .see-more-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  opacity: 1;
+  color: var(--text-primary);
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
 }
 
 @media (max-width: 768px) {
