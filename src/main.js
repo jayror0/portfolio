@@ -33,6 +33,8 @@ import {
   faBrain,
   faRobot,
   faLightbulb,
+  faSun,
+  faMoon,
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -52,7 +54,6 @@ import {
   faMicrosoft,
   faStrava,
 } from "@fortawesome/free-brands-svg-icons";
-
 
 library.add(
   faUserCircle,
@@ -79,6 +80,8 @@ library.add(
   faBrain,
   faRobot,
   faLightbulb,
+  faSun,
+  faMoon,
   faGithub,
   faLinkedin,
   faFacebook,

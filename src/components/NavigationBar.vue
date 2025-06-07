@@ -32,6 +32,20 @@
               <span class="nav-link-highlight"></span>
             </a>
           </li>
+          <li class="theme-toggle-container">
+            <button
+              @click="toggleTheme"
+              class="theme-toggle"
+              :aria-label="
+                isDarkTheme ? 'Switch to light mode' : 'Switch to dark mode'
+              "
+              :title="
+                isDarkTheme ? 'Switch to light mode' : 'Switch to dark mode'
+              "
+            >
+              <font-awesome-icon :icon="isDarkTheme ? 'sun' : 'moon'" />
+            </button>
+          </li>
         </ul>
       </div>
     </div>
@@ -46,6 +60,7 @@ export default {
       isScrolled: false,
       isMenuOpen: false,
       activeSection: "home",
+      isDarkTheme: true, 
       navItems: [
         { id: "home", text: "Home", href: "#home" },
         { id: "skills", text: "Skills", href: "#skills" },
@@ -63,12 +78,31 @@ export default {
 
     this.sections = Array.from(document.querySelectorAll("section[id]"));
 
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      this.isDarkTheme = savedTheme === "dark";
+      this.applyTheme();
+    } else {
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      this.isDarkTheme = prefersDark;
+      this.applyTheme();
+
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", this.handleSystemThemeChange);
+    }
+
     this.$nextTick(() => {
       this.handleScroll();
     });
   },
   beforeUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .removeEventListener("change", this.handleSystemThemeChange);
   },
   methods: {
     handleScroll() {
@@ -77,7 +111,7 @@ export default {
 
       const currentSection = this.sections
         .map((section) => {
-          const sectionTop = section.offsetTop - 150; 
+          const sectionTop = section.offsetTop - 150;
           const sectionHeight = section.offsetHeight;
           const sectionId = section.getAttribute("id");
 
@@ -104,6 +138,34 @@ export default {
         document.body.style.overflow = "";
       }
     },
+    toggleTheme() {
+      document.body.classList.add("theme-transition");
+
+      setTimeout(() => {
+        this.isDarkTheme = !this.isDarkTheme;
+        this.applyTheme();
+        localStorage.setItem("theme", this.isDarkTheme ? "dark" : "light");
+
+        setTimeout(() => {
+          document.body.classList.remove("theme-transition");
+        }, 300);
+      }, 50);
+    },
+    applyTheme() {
+      if (this.isDarkTheme) {
+        document.documentElement.removeAttribute("data-theme");
+      } else {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+      if (metaThemeColor) {
+        metaThemeColor.setAttribute(
+          "content",
+          this.isDarkTheme ? "#1a1a1a" : "#f5f5f5"
+        );
+      }
+    },
     closeMenu(event) {
       if (event) {
         event.preventDefault();
@@ -111,7 +173,7 @@ export default {
         if (href) {
           const targetElement = document.querySelector(href);
           if (targetElement) {
-            const offset = 80; // Adjusted offset for header
+            const offset = 80; 
             const targetPosition = targetElement.offsetTop - offset;
             window.scrollTo({
               top: targetPosition,
@@ -134,6 +196,12 @@ export default {
       });
       this.closeMenu();
     },
+    handleSystemThemeChange(event) {
+      if (!localStorage.getItem("theme")) {
+        this.isDarkTheme = event.matches;
+        this.applyTheme();
+      }
+    },
   },
 };
 </script>
@@ -145,7 +213,7 @@ export default {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: rgba(18, 18, 18, 0.8);
+  background-color: var(--navbar-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   transition: var(--transition);
@@ -154,8 +222,8 @@ export default {
 }
 
 .navbar-scrolled {
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  background-color: rgba(18, 18, 18, 0.95);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background-color: var(--navbar-scrolled-bg);
   padding: 0.75rem 0;
 }
 
@@ -221,7 +289,7 @@ export default {
   transform: translateX(-50%) scaleX(0);
   width: 100%;
   height: 2px;
-  background: var(--bg-gradient);
+  background-color: var(--primary-color);
   transition: transform 0.3s ease;
   transform-origin: center;
 }
@@ -229,6 +297,53 @@ export default {
 .nav-link.active .nav-link-highlight,
 .nav-link:hover .nav-link-highlight {
   transform: translateX(-50%) scaleX(1);
+}
+
+.theme-toggle-container {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.theme-toggle:hover {
+  color: var(--primary-color);
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+}
+
+[data-theme="light"] .theme-toggle {
+  color: var(--secondary-color);
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="light"] .theme-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .nav-social {
@@ -304,6 +419,10 @@ export default {
     font-size: 1.1rem;
     width: 100%;
     display: block;
+  }
+
+  .theme-toggle-container {
+    margin: 1rem 0 0 0;
   }
 
   .menu-open {

@@ -1,0 +1,61 @@
+[data-theme="light"] .card,
+[data-theme="light"] .project-card,
+[data-theme="light"] .experience-card,
+[data-theme="light"] .education-card,
+[data-theme="light"] .certificate-card,
+[data-theme="light"] .info-card {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .section-title {
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="light"] .section-subtitle {
+  color: var(--secondary-color);
+}
+
+[data-theme="light"] .social-link {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .btn-primary {
+  color: #ffffff;
+}
+
+[data-theme="light"] .btn-outline-primary:hover {
+  color: #ffffff;
+}
+
+[data-theme="light"] .scroll-top-btn {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] input,
+[data-theme="light"] textarea,
+[data-theme="light"] select {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .skill-badge {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .stat-card {
+  background-color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .timeline-item::before {
+  background-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(26, 149, 153, 0.2);
+}
+
+[data-theme="light"] .hero-content {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}

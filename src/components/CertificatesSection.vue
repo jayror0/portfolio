@@ -41,11 +41,11 @@ export default {
       certificates: [
         {
           id: 1,
-          image: "/Screenshot 2025-06-03 202416.png",
+          image: "/cert_photo1.png",
         },
         {
           id: 2,
-          image: "/Screenshot 2025-06-03 202536.png",
+          image: "/cert_photo2.png",
         },
       ],
     };

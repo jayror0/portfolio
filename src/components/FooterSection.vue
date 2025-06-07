@@ -208,7 +208,7 @@ export default {
   width: 45px;
   height: 45px;
   border-radius: 50%;
-  background: var(--bg-gradient);
+  background-color: var(--primary-color);
   color: white;
   border: none;
   display: flex;
@@ -232,6 +232,15 @@ export default {
 
 .scroll-top-btn:hover {
   background-color: var(--secondary-color);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+[data-theme="light"] .scroll-top-btn {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
+  background-color: var(--secondary-color);
+  opacity: 0.9;
 }
 
 @media (max-width: 992px) {
